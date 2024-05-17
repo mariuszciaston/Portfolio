@@ -1,3 +1,13 @@
+html {
+	font-family: 'Roboto';
+	font-weight: 400;
+	font-style: normal;
+	font-size: 16px;
+	color: var(--black);
+	background-color: var(--white);
+	height: 100%;
+}
+
 .theme-light {
 	--black: hsl(360, 0%, 0%);
 	--white: hsl(0, 0%, 100%);
@@ -10,16 +20,6 @@
 	--white: hsl(360, 0%, 0%);
 	--white-opa: hsla(0, 0%, 0%, 0.5);
 	--hover-bcg: hsl(0, 0%, 10%);
-}
-
-html {
-	font-family: 'Roboto';
-	font-weight: 400;
-	font-style: normal;
-	font-size: 16px;
-	color: var(--black);
-	background-color: var(--white);
-	height: 100%;
 }
 
 body {
@@ -58,6 +58,8 @@ header {
 	top: 0;
 	background-color: var(--white-opa);
 	z-index: 1;
+	touch-action: none;
+	overflow: auto;
 }
 
 #heading {
@@ -66,13 +68,12 @@ header {
 	margin: 0;
 	font-size: 1.9rem;
 	letter-spacing: 0.1rem;
-
 	display: flex;
 	justify-content: space-between;
-
 	gap: 1rem 2rem;
 	white-space: nowrap;
 	flex-wrap: wrap;
+	-webkit-backdrop-filter: blur(8px);
 	backdrop-filter: blur(8px);
 }
 
@@ -85,8 +86,6 @@ header {
 
 #social {
 	display: flex;
-	gap: 1rem;
-
 	gap: 1rem;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -125,9 +124,17 @@ h2 {
 	grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
 }
 
+.grid-container--fill.music {
+	grid-template-columns: 1fr;
+}
+
 @media (min-width: 72rem) {
 	.grid-container--fill {
 		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.grid-container--fill.music {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
@@ -141,6 +148,10 @@ h2 {
 
 .item:hover {
 	background-color: var(--hover-bcg);
+}
+
+.item:hover img {
+	background-color: var(--white);
 }
 
 .item img {
@@ -173,6 +184,7 @@ footer {
 	position: absolute;
 	bottom: 0;
 	background-color: var(--white-opa);
+	touch-action: none;
 }
 
 #signature {
@@ -182,6 +194,7 @@ footer {
 	white-space: nowrap;
 	flex-wrap: wrap;
 	padding: 1.5rem 1rem;
+	-webkit-backdrop-filter: blur(8px);
 	backdrop-filter: blur(8px);
 }
 
