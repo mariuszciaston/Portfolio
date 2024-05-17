@@ -79,98 +79,81 @@ const webDevProjects = [
 		imgSrc: 'images/Sdn.org.pl.png',
 		title: 'Sdn.org.pl',
 		year: '2022',
-		description: 'strona Stowarzyszenia Dobrej Nadziei',
+		description: 'strona internetowa Stowarzyszenia Dobrej Nadziei',
 	},
 	{
 		href: 'https://film.asp.krakow.pl/',
-		imgSrc: 'Film.asp.krakow.pl.png',
+		imgSrc: 'images/Film.asp.krakow.pl.png',
 		title: 'Film.asp.krakow.pl',
 		year: '2020',
-		description: 'strona Pracowni Filmu Animowanego ASP Kraków',
+		description: 'strona internetowa Pracowni Filmu Animowanego ASP Kraków',
 	},
 ];
 
 const musicProjects = [
 	{
-		href: 'xxxxx',
-		imgSrc: 'images/xxxxx.png',
+		iframeSrc:
+			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538817&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true',
 		title: 'Strasznie',
 		year: '2016',
 		description: 'eksperymentalny utwór elektroniczny',
 	},
 	{
-		href: 'xxxxx',
-		imgSrc: 'images/xxxxx.png',
+		iframeSrc:
+			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538397&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true',
 		title: 'Nightmare',
 		year: '2012',
 		description: 'Dark dubstep',
 	},
 	{
-		href: 'xxxxx',
-		imgSrc: 'images/xxxxx.png',
+		iframeSrc:
+			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538145&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true',
 		title: 'You Like It Remix',
 		year: '2008',
 		description: 'Electro house',
 	},
 	{
-		href: 'xxxxx',
-		imgSrc: 'images/xxxxx.png',
+		iframeSrc:
+			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822537608&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true',
 		title: 'Friday Night',
 		year: '2006',
 		description: 'Tribal techno',
-	},
-	{
-		href: 'xxxxx',
-		imgSrc: 'images/xxxxx.png',
-		title: 'Fight',
-		year: '2006',
-		description: 'Hard techno',
 	},
 ];
 
 const graphicProjects = [
 	{
-		href: 'xxxxx',
-		imgSrc: 'images/xxxxx.png',
-		title: 'xxxxx',
-		year: 'xxxxx',
-		description: 'xxxxx',
+		href: 'pdf/Candis-Konopie-2022-Zielona-Ulotka-DL.pdf',
+		imgSrc: 'images/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
+		title: 'Candis',
+		year: '2022',
+		description: 'Ulotka DL',
 	},
+
 	{
-		href: 'xxxxx',
-		imgSrc: 'images/xxxxx.png',
-		title: 'xxxxx',
-		year: 'xxxxx',
-		description: 'xxxxx',
+		href: 'pdf/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.pdf',
+		imgSrc: 'images/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
+		title: 'Uzależnienia Behawioralne',
+		year: '2018',
+		description: 'Ulotka DL',
 	},
+
 	{
-		href: 'xxxxx',
-		imgSrc: 'images/xxxxx.png',
-		title: 'xxxxx',
-		year: 'xxxxx',
-		description: 'xxxxx',
+		href: 'pdf/Candis-Konopie-2021-Czarna-Ulotka-DL.pdf',
+		imgSrc: 'images/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
+		title: 'Candis',
+		year: '2021',
+		description: 'Ulotka DL',
 	},
+
 	{
-		href: 'xxxxx',
-		imgSrc: 'images/xxxxx.png',
-		title: 'xxxxx',
-		year: 'xxxxx',
-		description: 'xxxxx',
+		href: 'pdf/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.pdf',
+		imgSrc: 'images/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.png',
+		title: 'Porozmawiajmy o emocjach',
+		year: '2022',
+		description: 'Ulotka DL',
 	},
 ];
-
-function generateProjects(array) {
-	return array
-		.map(
-			(project) => `
-        <a href="${project.href}" target="_blank" class="item">
-            <img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='images/placeholder.png'">
-            <p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
-        </a>
-    `
-		)
-		.join('');
-}
 
 function saveTheme(themeName) {
 	localStorage.setItem('theme', themeName);
@@ -197,10 +180,35 @@ function loadTheme() {
 	}
 }
 
+function generateProjects(array, type) {
+	return array
+		.map((project) => {
+			if (type === 'music') {
+				return `
+                    <div class="item">
+
+					
+					<iframe width="100%" scrolling="no" frameborder="no" allow="autoplay" src="${project.iframeSrc}"></iframe>
+
+
+					<p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
+                    </div>
+                `;
+			}
+			return `
+                    <a href="${project.href}" target="_blank" class="item">
+                        <img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='images/placeholder.png'">
+                        <p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
+                    </a>
+                `;
+		})
+		.join('');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-	document.querySelector('.grid-container.web').innerHTML = generateProjects(webDevProjects);
-	document.querySelector('.grid-container.music').innerHTML = generateProjects(musicProjects);
-	document.querySelector('.grid-container.graphic').innerHTML = generateProjects(graphicProjects);
+	document.querySelector('.grid-container.web').innerHTML = generateProjects(webDevProjects, 'web');
+	document.querySelector('.grid-container.music').innerHTML = generateProjects(musicProjects, 'music');
+	document.querySelector('.grid-container.graphic').innerHTML = generateProjects(graphicProjects, 'graphic');
 
 	loadTheme();
 
