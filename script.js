@@ -1,14 +1,14 @@
 const webDevProjects = [
 	{
 		href: 'https://mariuszciaston.github.io/Battleship/',
-		imgSrc: 'images/Battleship.png',
+		imgSrc: 'webdev/Battleship.png',
 		title: 'Battleship',
 		year: '2024',
 		description: 'gra w statki',
 	},
 	{
 		href: 'https://mariuszciaston.github.io/minimaLIST/',
-		imgSrc: 'images/minimaList.png',
+		imgSrc: 'webdev/minimaList.png',
 		title: 'minimaLIST',
 		year: '2023',
 		description: 'aplikacja typu lista zadań',
@@ -16,28 +16,28 @@ const webDevProjects = [
 
 	{
 		href: 'https://mariuszciaston.github.io/Weather-App/',
-		imgSrc: 'images/Weather-App.png',
+		imgSrc: 'webdev/Weather-App.png',
 		title: 'Weather App',
 		year: '2023',
 		description: 'aplikacja pogodowa',
 	},
 	{
 		href: 'https://mariuszciaston.github.io/Tic-Tac-Toe/',
-		imgSrc: 'images/Tic-Tac-Toe.png',
+		imgSrc: 'webdev/Tic-Tac-Toe.png',
 		title: 'Tic Tac Toe',
 		year: '2023',
 		description: 'gra kółko i krzyżyk',
 	},
 	{
 		href: 'https://mariuszciaston.github.io/Sign-Up_Form/',
-		imgSrc: 'images/Sign-Up_Form.png',
+		imgSrc: 'webdev/Sign-Up_Form.png',
 		title: 'Sign-Up Form',
 		year: '2023',
 		description: 'prototyp formularza rejestracyjnego',
 	},
 	{
 		href: 'https://mariuszciaston.github.io/Admin-Dashboard/',
-		imgSrc: 'images/Admin-Dashboard.png',
+		imgSrc: 'webdev/Admin-Dashboard.png',
 		title: 'Admin Dashboard',
 		year: '2023',
 		description: 'prototyp panelu administracyjnego',
@@ -45,7 +45,7 @@ const webDevProjects = [
 
 	{
 		href: 'https://mariuszciaston.github.io/Library/',
-		imgSrc: 'images/Library.png',
+		imgSrc: 'webdev/Library.png',
 		title: 'Library',
 		year: '2022',
 		description: 'aplikacja do zapisywania książek',
@@ -53,7 +53,7 @@ const webDevProjects = [
 
 	{
 		href: 'https://mariuszciaston.github.io/Etch-A-Sketch/',
-		imgSrc: 'images/Etch-A-Sketch.png',
+		imgSrc: 'webdev/Etch-A-Sketch.png',
 		title: 'Etch-A-Sketch',
 		year: '2022',
 		description: 'aplikacja do tworzenia pixel artu',
@@ -61,7 +61,7 @@ const webDevProjects = [
 
 	{
 		href: 'https://mariuszciaston.github.io/Calculator/',
-		imgSrc: 'images/Calculator.png',
+		imgSrc: 'webdev/Calculator.png',
 		title: 'Calculator',
 		year: '2022',
 		description: 'aplikacja kalkulator',
@@ -69,24 +69,55 @@ const webDevProjects = [
 
 	{
 		href: 'https://mariuszciaston.github.io/Rock-Paper-Scissors/',
-		imgSrc: 'images/Rock-Paper-Scissors.png',
+		imgSrc: 'webdev/Rock-Paper-Scissors.png',
 		title: 'Rock Paper Scissors',
 		year: '2022',
 		description: 'gra papier, kamień, nożyce',
 	},
 	{
 		href: 'https://sdn.org.pl/',
-		imgSrc: 'images/Sdn.org.pl.png',
+		imgSrc: 'webdev/Sdn.org.pl.png',
 		title: 'Sdn.org.pl',
 		year: '2022',
 		description: 'strona internetowa Stowarzyszenia Dobrej Nadziei',
 	},
 	{
 		href: 'https://film.asp.krakow.pl/',
-		imgSrc: 'images/Film.asp.krakow.pl.png',
+		imgSrc: 'webdev/Film.asp.krakow.pl.png',
 		title: 'Film.asp.krakow.pl',
 		year: '2020',
 		description: 'strona internetowa Pracowni Filmu Animowanego ASP Kraków',
+	},
+];
+
+const mocapProjects = [
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		title: 'title',
+		year: 'xxxx',
+		description: 'xxxx',
+	},
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		title: 'title',
+		year: 'xxxx',
+		description: 'xxxx',
+	},
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		title: 'title',
+		year: 'xxxx',
+		description: 'xxxx',
+	},
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		title: 'title',
+		year: 'xxxx',
+		description: 'xxxx',
 	},
 ];
 
@@ -123,32 +154,32 @@ const musicProjects = [
 
 const graphicProjects = [
 	{
-		href: 'images/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
-		imgSrc: 'images/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
+		href: 'graphics/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
+		imgSrc: 'graphics/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
 		title: 'Candis',
 		year: '2022',
 		description: 'Ulotka DL',
 	},
 
 	{
-		href: 'images/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
-		imgSrc: 'images/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
+		href: 'graphics/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
+		imgSrc: 'graphics/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
 		title: 'Uzależnienia Behawioralne',
 		year: '2018',
 		description: 'Ulotka DL',
 	},
 
 	{
-		href: 'images/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
-		imgSrc: 'images/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
+		href: 'graphics/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
+		imgSrc: 'graphics/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
 		title: 'Candis',
 		year: '2021',
 		description: 'Ulotka DL',
 	},
 
 	{
-		href: 'images/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.png',
-		imgSrc: 'images/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.png',
+		href: 'graphics/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.png',
+		imgSrc: 'graphics/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.png',
 		title: 'Porozmawiajmy o emocjach',
 		year: '2022',
 		description: 'Ulotka DL',
@@ -197,7 +228,7 @@ function generateProjects(array, type) {
 			}
 			return `
                     <a href="${project.href}" target="_blank" class="item">
-                        <img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='images/placeholder.png'">
+                        <img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='img/placeholder.png'">
                         <p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
                     </a>
                 `;
@@ -206,9 +237,10 @@ function generateProjects(array, type) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	document.querySelector('.grid-container.web').innerHTML = generateProjects(webDevProjects, 'web');
+	document.querySelector('.grid-container.webdev').innerHTML = generateProjects(webDevProjects, 'webdev');
+	document.querySelector('.grid-container.mocap').innerHTML = generateProjects(mocapProjects, 'mocap');
 	document.querySelector('.grid-container.music').innerHTML = generateProjects(musicProjects, 'music');
-	document.querySelector('.grid-container.graphic').innerHTML = generateProjects(graphicProjects, 'graphic');
+	document.querySelector('.grid-container.graphics').innerHTML = generateProjects(graphicProjects, 'graphics');
 
 	loadTheme();
 
