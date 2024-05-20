@@ -124,28 +124,28 @@ const mocapProjects = [
 const musicProjects = [
 	{
 		iframeSrc:
-			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538817&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true',
+			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538817&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true',
 		title: 'Strasznie',
 		year: '2016',
 		description: 'eksperymentalny utwór elektroniczny',
 	},
 	{
 		iframeSrc:
-			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538397&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true',
+			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538397&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true',
 		title: 'Nightmare',
 		year: '2012',
 		description: 'Dark dubstep',
 	},
 	{
 		iframeSrc:
-			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538145&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true',
+			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538145&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true',
 		title: 'You Like It Remix',
 		year: '2008',
 		description: 'Electro house',
 	},
 	{
 		iframeSrc:
-			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822537608&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true',
+			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822537608&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true',
 		title: 'Friday Night',
 		year: '2006',
 		description: 'Tribal techno',
