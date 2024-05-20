@@ -56,7 +56,7 @@ const webDevProjects = [
 		imgSrc: 'images/Etch-A-Sketch.png',
 		title: 'Etch-A-Sketch',
 		year: '2022',
-		description: 'aplikacja do rysowania',
+		description: 'aplikacja do tworzenia pixel artu',
 	},
 
 	{
@@ -123,7 +123,7 @@ const musicProjects = [
 
 const graphicProjects = [
 	{
-		href: 'pdf/Candis-Konopie-2022-Zielona-Ulotka-DL.pdf',
+		href: 'images/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
 		imgSrc: 'images/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
 		title: 'Candis',
 		year: '2022',
@@ -131,7 +131,7 @@ const graphicProjects = [
 	},
 
 	{
-		href: 'pdf/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.pdf',
+		href: 'images/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
 		imgSrc: 'images/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
 		title: 'Uzależnienia Behawioralne',
 		year: '2018',
@@ -139,7 +139,7 @@ const graphicProjects = [
 	},
 
 	{
-		href: 'pdf/Candis-Konopie-2021-Czarna-Ulotka-DL.pdf',
+		href: 'images/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
 		imgSrc: 'images/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
 		title: 'Candis',
 		year: '2021',
@@ -147,7 +147,7 @@ const graphicProjects = [
 	},
 
 	{
-		href: 'pdf/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.pdf',
+		href: 'images/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.png',
 		imgSrc: 'images/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.png',
 		title: 'Porozmawiajmy o emocjach',
 		year: '2022',
