@@ -186,31 +186,6 @@ const graphicProjects = [
 	},
 ];
 
-function saveTheme(themeName) {
-	localStorage.setItem('theme', themeName);
-	document.documentElement.className = themeName;
-}
-
-function toggleTheme() {
-	if (localStorage.getItem('theme') === 'theme-dark') {
-		saveTheme('theme-light');
-		document.querySelector('#theme-switch > i').classList.remove('fa-sun');
-		document.querySelector('#theme-switch > i').classList.add('fa-moon');
-	} else {
-		saveTheme('theme-dark');
-		document.querySelector('#theme-switch > i').classList.remove('fa-moon');
-		document.querySelector('#theme-switch > i').classList.add('fa-sun');
-	}
-}
-
-function loadTheme() {
-	if (localStorage.getItem('theme') === 'theme-dark') {
-		saveTheme('theme-dark');
-	} else {
-		saveTheme('theme-light');
-	}
-}
-
 function generateProjects(array, type) {
 	return array
 		.map((project) => {
@@ -236,14 +211,60 @@ function generateProjects(array, type) {
 		.join('');
 }
 
+function initTheme() {
+	const themeIcon = document.querySelector('#theme-switch > i');
+
+	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		themeIcon.classList.toggle('fa-sun', true);
+		themeIcon.classList.toggle('fa-moon', false);
+		document.documentElement.className = 'theme-dark';
+	} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+		themeIcon.classList.toggle('fa-moon', true);
+		themeIcon.classList.toggle('fa-sun', false);
+
+		document.documentElement.className = 'theme-light';
+	}
+}
+
+function toggleTheme() {
+	const themeIcon = document.querySelector('#theme-switch > i');
+	themeIcon.classList.toggle('fa-sun');
+	themeIcon.classList.toggle('fa-moon');
+
+	if (themeIcon.classList.contains('fa-sun')) {
+		document.documentElement.className = 'theme-dark';
+	} else if (themeIcon.classList.contains('fa-moon')) {
+		document.documentElement.className = 'theme-light';
+	}
+}
+
+function watchTheme() {
+	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+		const themeIcon = document.querySelector('#theme-switch > i');
+
+		if (event.matches) {
+			themeIcon.classList.toggle('fa-sun', true);
+			themeIcon.classList.toggle('fa-moon', false);
+
+			document.documentElement.className = 'theme-dark';
+		} else if (!event.matches) {
+			themeIcon.classList.toggle('fa-moon', true);
+			themeIcon.classList.toggle('fa-sun', false);
+
+			document.documentElement.className = 'theme-light';
+		}
+	});
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+	initTheme();
+
 	document.querySelector('.grid-container.webdev').innerHTML = generateProjects(webDevProjects, 'webdev');
 	document.querySelector('.grid-container.mocap').innerHTML = generateProjects(mocapProjects, 'mocap');
 	document.querySelector('.grid-container.music').innerHTML = generateProjects(musicProjects, 'music');
 	document.querySelector('.grid-container.graphics').innerHTML = generateProjects(graphicProjects, 'graphics');
 
-	loadTheme();
-
+	watchTheme();
 	document.querySelector('#theme-switch').addEventListener('click', toggleTheme);
 	document.querySelector('#wrapper').style.visibility = 'visible';
 	document.querySelector('body').style.animation = 'fadeInAnimation ease 1s forwards';
