@@ -160,7 +160,7 @@ h2 {
 	border: solid 1px grey;
 	box-sizing: border-box;
 	width: 100%;
-	/* aspect-ratio: 4/3; */
+	aspect-ratio: 4/3;
 }
 
 .item p {
@@ -174,7 +174,7 @@ b {
 .grid-element {
 	padding: 1rem;
 	color: white;
-	/* aspect-ratio: 4/3; */
+	aspect-ratio: 4/3;
 }
 
 footer {
