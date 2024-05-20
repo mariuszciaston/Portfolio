@@ -191,22 +191,22 @@ function generateProjects(array, type) {
 		.map((project) => {
 			if (type === 'music') {
 				return `
-                    <div class="item">
+					<div class="item">
 
 					
 					<iframe width="100%" scrolling="no" frameborder="no" allow="autoplay" src="${project.iframeSrc}"></iframe>
 
 
 					<p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
-                    </div>
-                `;
+					</div>
+				`;
 			}
 			return `
-                    <a href="${project.href}" target="_blank" class="item">
-                        <img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='img/placeholder.png'">
-                        <p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
-                    </a>
-                `;
+					<a href="${project.href}" target="_blank" class="item">
+						<img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='img/placeholder.png'">
+						<p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
+					</a>
+				`;
 		})
 		.join('');
 }
@@ -256,6 +256,15 @@ function watchTheme() {
 	});
 }
 
+const adjustOverflowForIOS = () => {
+	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+	if (isIOS) {
+		document.querySelector('header').style.overflow = 'visible';
+		document.querySelector('main').style.overflow = 'visible';
+	}
+};
+
 document.addEventListener('DOMContentLoaded', () => {
 	initTheme();
 
@@ -268,4 +277,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.querySelector('#theme-switch').addEventListener('click', toggleTheme);
 	document.querySelector('#wrapper').style.visibility = 'visible';
 	document.querySelector('body').style.animation = 'fadeInAnimation ease 1s forwards';
+	adjustOverflowForIOS();
 });
