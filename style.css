@@ -82,6 +82,12 @@ header {
 	padding: 0;
 	font-size: inherit;
 	font-weight: 700;
+	cursor: pointer;
+}
+
+#heading h1:hover {
+	background-color: var(--black);
+	color: var(--white);
 }
 
 #social {
