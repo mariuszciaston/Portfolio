@@ -117,13 +117,12 @@ main::-webkit-scrollbar {
 }
 
 h2 {
-	margin: 0;
-	padding: 0 1rem;
-	padding: 2rem 1rem 0rem 1rem;
+	padding: 0;
+	margin: 2rem 1rem 0rem 1rem;
 	font-size: 1.45rem;
 	font-weight: 300;
 	display: flex;
-	gap: 1rem;
+	max-width: max-content;
 }
 
 .grid-container--fill {
@@ -142,6 +141,31 @@ h2 {
 	.grid-container--fill.music {
 		grid-template-columns: repeat(2, 1fr);
 	}
+}
+
+section h2 {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+section h2:hover {
+	text-decoration: line-through;
+}
+
+section.hidden .grid-container {
+	padding: 1rem 0;
+}
+
+section.hidden h2:hover {
+	text-decoration: none;
+}
+
+section.hidden h2:hover::before {
+	content: '+\00a0';
+}
+
+section.hidden > .grid-container--fill > * {
+	display: none;
 }
 
 .item {
@@ -163,7 +187,7 @@ h2 {
 .item img {
 	max-width: 100%;
 	border-radius: 1rem;
-	border: solid 1px grey;
+	border: solid 0.0625rem grey;
 	box-sizing: border-box;
 	width: 100%;
 	aspect-ratio: 4/3;

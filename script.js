@@ -94,29 +94,63 @@ const mocapProjects = [
 	{
 		href: 'xxxx',
 		imgSrc: 'mocap/xxxx.png',
-		title: 'title',
-		year: 'xxxx',
 		description: 'xxxx',
 	},
 	{
 		href: 'xxxx',
 		imgSrc: 'mocap/xxxx.png',
-		title: 'title',
-		year: 'xxxx',
 		description: 'xxxx',
 	},
 	{
 		href: 'xxxx',
 		imgSrc: 'mocap/xxxx.png',
-		title: 'title',
-		year: 'xxxx',
 		description: 'xxxx',
 	},
 	{
 		href: 'xxxx',
 		imgSrc: 'mocap/xxxx.png',
-		title: 'title',
-		year: 'xxxx',
+		description: 'xxxx',
+	},
+
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		description: 'xxxx',
+	},
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		description: 'xxxx',
+	},
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		description: 'xxxx',
+	},
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		description: 'xxxx',
+	},
+
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		description: 'xxxx',
+	},
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		description: 'xxxx',
+	},
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
+		description: 'xxxx',
+	},
+	{
+		href: 'xxxx',
+		imgSrc: 'mocap/xxxx.png',
 		description: 'xxxx',
 	},
 ];
@@ -239,9 +273,8 @@ function toggleTheme() {
 }
 
 function watchTheme() {
+	const themeIcon = document.querySelector('#theme-switch > i');
 	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-		const themeIcon = document.querySelector('#theme-switch > i');
-
 		if (event.matches) {
 			themeIcon.classList.toggle('fa-sun', true);
 			themeIcon.classList.toggle('fa-moon', false);
@@ -278,4 +311,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.querySelector('#wrapper').style.visibility = 'visible';
 	document.querySelector('body').style.animation = 'fadeInAnimation ease 1s forwards';
 	adjustOverflowForIOS();
+
+	const sections = document.querySelectorAll('section h2');
+	sections.forEach((section) => {
+		section.addEventListener('click', () => {
+			section.parentElement.classList.toggle('hidden');
+		});
+	});
+
+	document.querySelector('#heading h1').addEventListener('click', () => {
+		window.location.reload();
+	});
 });
