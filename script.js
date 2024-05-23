@@ -232,15 +232,15 @@ function generateProjects(array, type) {
 					<div class="item">
 					<iframe width="100%" scrolling="no" frameborder="yes" allow="autoplay" style="border-radius: 1rem;" src="${project.iframeSrc}"></iframe>
 					<p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
-					</div>
-				`;
+                    </div>
+                `;
 			}
 			return `
-					<a href="${project.href}" target="_blank" class="item">
-						<img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='img/placeholder.png'">
-						<p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
-					</a>
-				`;
+			<a href="${project.href}" target="_blank" class="item">
+				<img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='img/placeholder.png'">
+				<p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
+			</a>
+		`;
 		})
 		.join('');
 }
@@ -289,6 +289,21 @@ function watchTheme() {
 	});
 }
 
+function toggleFocus() {
+	const focusIcon = document.querySelector('#focus-switch > i');
+
+	focusIcon.addEventListener('click', () => {
+		focusIcon.classList.toggle('fa-solid');
+		focusIcon.classList.toggle('fa-regular');
+
+		const gridContainers = document.querySelectorAll('.grid-container');
+
+		gridContainers.forEach((gridContainer) => {
+			gridContainer.classList.toggle('focus');
+		});
+	});
+}
+
 const adjustOverflowForIOS = () => {
 	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -322,4 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.querySelector('#heading h1').addEventListener('click', () => {
 		window.location.reload();
 	});
+
+	toggleFocus();
 });

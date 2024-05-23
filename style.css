@@ -94,8 +94,12 @@ header {
 	display: flex;
 	gap: 1rem;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: repeat(5, 1fr);
 	justify-items: center;
+}
+
+#social > * {
+	max-width: 2rem;
 }
 
 main {
@@ -171,17 +175,25 @@ section.hidden > .grid-container--fill > * {
 .item {
 	text-decoration: none;
 	color: var(--black);
-	padding: 1rem 1rem 0 1rem;
-	object-fit: fit;
+	padding: 1rem;
 	border-radius: 1rem;
+	transition: filter 0.5s ease;
 }
 
 .item:hover {
 	background-color: var(--hover-bcg);
 }
 
+.grid-container.focus .item {
+	filter: grayscale(1) blur(4px);
+}
+
+.grid-container.focus .item:hover {
+	filter: grayscale(0) blur(0);
+}
+
 .item:hover img {
-	background-color: var(--white);
+	background-color: white;
 }
 
 .item img {
@@ -191,10 +203,13 @@ section.hidden > .grid-container--fill > * {
 	box-sizing: border-box;
 	width: 100%;
 	aspect-ratio: 4/3;
+	/* object-fit: contain; */
+	background-color: white;
 }
 
 .item p {
 	line-height: 1.5em;
+	margin: 1rem 0 0 0;
 }
 
 b {
@@ -238,6 +253,7 @@ hr {
 	margin: 0 1rem;
 }
 
+#focus-switch,
 #theme-switch {
 	background: none;
 	border: none;
@@ -248,6 +264,7 @@ hr {
 	outline: inherit;
 }
 
+.fa-eye,
 .fa-sun,
 .fa-moon,
 .fa-github,
@@ -257,6 +274,7 @@ hr {
 	cursor: pointer;
 }
 
+.fa-eye:hover,
 .fa-sun:hover,
 .fa-moon:hover,
 .fa-github:hover,
@@ -265,7 +283,17 @@ hr {
 	transform: scale(1.2);
 }
 
-@media only screen and (min-width: 521px) {
+@media (not (any-pointer: fine)) {
+	#focus-switch {
+		display: none;
+	}
+
+	#social {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media only screen and (min-width: 533px) {
 	main {
 		padding-top: 4.184rem;
 		padding-bottom: 6.005rem;
