@@ -92,66 +92,52 @@ const webDevProjects = [
 
 const mocapProjects = [
 	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
+		href: 'mocap/mocap-1-large.jpg',
+		imgSrc: 'mocap/mocap-1.jpg',
+		description: 'mocap-1.jpg',
 	},
 	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
+		href: 'mocap/mocap-2-large.jpg',
+		imgSrc: 'mocap/mocap-2.jpg',
+		description: 'mocap-2.jpg',
 	},
 	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
+		href: 'mocap/mocap-3-large.jpg',
+		imgSrc: 'mocap/mocap-3.jpg',
+		description: 'mocap-3.jpg',
 	},
 	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
-	},
-
-	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
+		href: 'mocap/mocap-4-large.jpg',
+		imgSrc: 'mocap/mocap-4.jpg',
+		description: 'mocap-4.jpg',
 	},
 	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
-	},
-	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
-	},
-	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
+		href: 'mocap/mocap-5-large.jpg',
+		imgSrc: 'mocap/mocap-5.jpg',
+		description: 'mocap-5.jpg',
 	},
 
 	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
+		iframeSrc: 'https://www.youtube.com/embed/C-MedZPyLog?si=bJ5w_yK_ckT8XVFv',
 	},
 	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
+		iframeSrc: 'https://www.youtube.com/embed/LtybBucgNmI?si=0WuRXA3Aj1RNBdCM',
 	},
 	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
+		iframeSrc: 'https://www.youtube.com/embed/btZNWk0gGd4?si=LPYkdopqCibfIml5',
+	},
+
+	{
+		iframeSrc: 'https://www.youtube.com/embed/ozqPbTbIxMs?si=tglL0KkauTrHXJKO',
 	},
 	{
-		href: 'xxxx',
-		imgSrc: 'mocap/xxxx.png',
-		description: 'xxxx',
+		iframeSrc: 'https://www.youtube.com/embed/7TioWVaoksQ?si=_ZAvdA3bT73ygp7b',
+	},
+	{
+		iframeSrc: 'https://www.youtube.com/embed/ev983G6xkdE?si=T_TCLi2h3_s3Rbbv',
+	},
+	{
+		iframeSrc: 'https://www.youtube.com/embed/ZAZwuitd4_8?si=IcKpuSrWjHsyfBX3',
 	},
 ];
 
@@ -188,7 +174,7 @@ const musicProjects = [
 
 const graphicProjects = [
 	{
-		href: 'graphics/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
+		href: 'graphics/Candis-Konopie-2022-Zielona-Ulotka-DL-large.png',
 		imgSrc: 'graphics/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
 		title: 'Candis',
 		year: '2022',
@@ -196,7 +182,7 @@ const graphicProjects = [
 	},
 
 	{
-		href: 'graphics/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
+		href: 'graphics/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL-large.png',
 		imgSrc: 'graphics/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
 		title: 'Uzależnienia Behawioralne',
 		year: '2018',
@@ -204,7 +190,7 @@ const graphicProjects = [
 	},
 
 	{
-		href: 'graphics/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
+		href: 'graphics/Candis-Konopie-2021-Czarna-Ulotka-DL-large.png',
 		imgSrc: 'graphics/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
 		title: 'Candis',
 		year: '2021',
@@ -212,7 +198,7 @@ const graphicProjects = [
 	},
 
 	{
-		href: 'graphics/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.png',
+		href: 'graphics/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL-large.png',
 		imgSrc: 'graphics/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.png',
 		title: 'Porozmawiajmy o emocjach',
 		year: '2022',
@@ -223,14 +209,28 @@ const graphicProjects = [
 function generateProjects(array, type) {
 	return array
 		.map((project) => {
+			if (type === 'mocap') {
+				return project.iframeSrc
+					? `
+					<div class="item">
+					<iframe style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem; border: solid 0.0625rem grey; box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}"></iframe>
+
+					  </div>
+                `
+					: `
+                    <a href="${project.href}" target="_blank" class="item">
+                        <img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='img/placeholder.png'">
+
+                       
+						
+                    </a>
+                `;
+			}
+
 			if (type === 'music') {
 				return `
 					<div class="item">
-
-					
-					<iframe width="100%" scrolling="no" frameborder="no" allow="autoplay" src="${project.iframeSrc}"></iframe>
-
-
+					<iframe width="100%" scrolling="no" frameborder="yes" allow="autoplay" style="border-radius: 1rem;" src="${project.iframeSrc}"></iframe>
 					<p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
 					</div>
 				`;
