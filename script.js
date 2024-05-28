@@ -198,10 +198,10 @@ const graphicProjects = [
 	},
 
 	{
-		href: 'graphics/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL-large.png',
-		imgSrc: 'graphics/Porozmawiajmy-o-emocjach-2022-Batorego-Ulotka-DL.png',
-		title: 'Porozmawiajmy o emocjach',
-		year: '2022',
+		href: 'graphics/Uzaleznienia-Behawioralne-2019-Batorego-Ulotka-DL-large.png',
+		imgSrc: 'graphics/Uzaleznienia-Behawioralne-2019-Batorego-Ulotka-DL.png',
+		title: 'Uzależnienia Behawioralne',
+		year: '2019',
 		description: 'Ulotka DL',
 	},
 ];
