@@ -185,7 +185,7 @@ section.hidden > .grid-container--fill > * {
 }
 
 .grid-container.focus .item {
-	filter: grayscale(1) blur(4px);
+	filter: grayscale(1) blur(1px);
 }
 
 .grid-container.focus .item:hover {
