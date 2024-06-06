@@ -214,15 +214,11 @@ function generateProjects(array, type) {
 					? `
 					<div class="item">
 					<iframe style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem; border: solid 0.0625rem grey; box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}"></iframe>
-
-					  </div>
+					</div>
                 `
 					: `
                     <a href="${project.href}" target="_blank" class="item">
-                        <img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='img/placeholder.png'">
-
-                       
-						
+                        <img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
                     </a>
                 `;
 			}
@@ -237,7 +233,7 @@ function generateProjects(array, type) {
 			}
 			return `
 			<a href="${project.href}" target="_blank" class="item">
-				<img src="${project.imgSrc}" alt="${project.title}" onerror="this.onerror=null; this.src='img/placeholder.png'">
+				<img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
 				<p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
 			</a>
 		`;
@@ -317,9 +313,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	initTheme();
 
 	document.querySelector('.grid-container.webdev').innerHTML = generateProjects(webDevProjects, 'webdev');
-	document.querySelector('.grid-container.mocap').innerHTML = generateProjects(mocapProjects, 'mocap');
-	document.querySelector('.grid-container.music').innerHTML = generateProjects(musicProjects, 'music');
-	document.querySelector('.grid-container.graphics').innerHTML = generateProjects(graphicProjects, 'graphics');
 
 	watchTheme();
 	document.querySelector('#theme-switch').addEventListener('click', toggleTheme);
@@ -327,10 +320,28 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.querySelector('body').style.animation = 'fadeInAnimation ease 1s forwards';
 	adjustOverflowForIOS();
 
-	const sections = document.querySelectorAll('section h2');
-	sections.forEach((section) => {
-		section.addEventListener('click', () => {
-			section.parentElement.classList.toggle('hidden');
+	const sectionTitles = document.querySelectorAll('section h2');
+
+	let mocapGenerated = false;
+	let musicGenerated = false;
+	let graphicsGenerated = false;
+
+	sectionTitles.forEach((sectionTitle) => {
+		sectionTitle.addEventListener('click', () => {
+			sectionTitle.parentElement.classList.toggle('hidden');
+
+			if (sectionTitle.parentElement.id === 'second' && !mocapGenerated) {
+				document.querySelector('.grid-container.mocap').innerHTML = generateProjects(mocapProjects, 'mocap');
+				mocapGenerated = true;
+			}
+			if (sectionTitle.parentElement.id === 'third' && !musicGenerated) {
+				document.querySelector('.grid-container.music').innerHTML = generateProjects(musicProjects, 'music');
+				musicGenerated = true;
+			}
+			if (sectionTitle.parentElement.id === 'fourth' && !graphicsGenerated) {
+				document.querySelector('.grid-container.graphics').innerHTML = generateProjects(graphicProjects, 'graphics');
+				graphicsGenerated = true;
+			}
 		});
 	});
 
