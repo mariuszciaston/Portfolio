@@ -206,7 +206,17 @@ const graphicProjects = [
 	},
 ];
 
-function generateProjects(array, type) {
+function generateProjects(
+	array: {
+		iframeSrc?: string;
+		href?: string;
+		imgSrc?: string;
+		title?: string;
+		year?: string;
+		description?: string;
+	}[],
+	type: 'webdev' | 'mocap' | 'music' | 'graphics'
+) {
 	return array
 		.map((project) => {
 			if (type === 'mocap') {
@@ -300,8 +310,8 @@ function toggleFocus() {
 	});
 }
 
-const adjustOverflowForIOS = () => {
-	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+const topBarScrollFixIOS = () => {
+	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
 
 	if (isIOS) {
 		document.querySelector('header').style.overflow = 'visible';
@@ -316,9 +326,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	watchTheme();
 	document.querySelector('#theme-switch').addEventListener('click', toggleTheme);
-	document.querySelector('#wrapper').style.visibility = 'visible';
+	(document.querySelector('#wrapper') as HTMLElement).style.visibility = 'visible';
 	document.querySelector('body').style.animation = 'fadeInAnimation ease 1s forwards';
-	adjustOverflowForIOS();
+	topBarScrollFixIOS();
 
 	const sectionTitles = document.querySelectorAll('section h2');
 
