@@ -49,12 +49,12 @@ function initTheme() {
 	const themeIcon = document.querySelector('#theme-switch > i');
 
 	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		themeIcon.classList.toggle('fa-sun', true);
-		themeIcon.classList.toggle('fa-moon', false);
+		themeIcon?.classList.toggle('fa-sun', true);
+		themeIcon?.classList.toggle('fa-moon', false);
 		document.documentElement.className = 'theme-dark';
 	} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-		themeIcon.classList.toggle('fa-moon', true);
-		themeIcon.classList.toggle('fa-sun', false);
+		themeIcon?.classList.toggle('fa-moon', true);
+		themeIcon?.classList.toggle('fa-sun', false);
 		document.documentElement.className = 'theme-light';
 	}
 }
@@ -90,7 +90,7 @@ function watchTheme() {
 function toggleFocus() {
 	const focusIcon = document.querySelector('#focus-switch > i');
 
-	focusIcon.addEventListener('click', () => {
+	focusIcon?.addEventListener('click', () => {
 		focusIcon.classList.toggle('fa-solid');
 		focusIcon.classList.toggle('fa-regular');
 
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.querySelector('.grid-container.webdev').innerHTML = generateProjects(webDevProjects, 'webdev');
 
 	watchTheme();
-	document.querySelector('#theme-switch').addEventListener('click', toggleTheme);
+	document.querySelector('#theme-switch')?.addEventListener('click', toggleTheme);
 	(document.querySelector('#wrapper') as HTMLElement).style.visibility = 'visible';
 	document.querySelector('body').style.animation = 'fadeInAnimation ease 1s forwards';
 	topBarScrollFixIOS();
