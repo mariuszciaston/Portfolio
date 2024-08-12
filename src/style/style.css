@@ -19,7 +19,7 @@ html {
 	--black: hsl(360, 0%, 100%);
 	--white: hsl(360, 0%, 0%);
 	--white-opa: hsla(0, 0%, 0%, 0.5);
-	--hover-bcg: hsl(0, 0%, 10%);
+	--hover-bcg: hsl(0, 0%, 15%);
 }
 
 body {
@@ -137,16 +137,6 @@ h2 {
 	grid-template-columns: 1fr;
 }
 
-@media (min-width: 72rem) {
-	.grid-container--fill {
-		grid-template-columns: repeat(4, 1fr);
-	}
-
-	.grid-container--fill.music {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
-
 section h2 {
 	cursor: pointer;
 	text-decoration: none;
@@ -243,9 +233,13 @@ footer {
 	backdrop-filter: blur(8px);
 }
 
-#signature a {
+a {
 	color: var(--black);
 	text-decoration: none;
+}
+
+a:not(.item):hover {
+	text-decoration: underline;
 }
 
 hr {
@@ -308,5 +302,15 @@ hr {
 	header,
 	footer {
 		width: calc(100% - 2rem);
+	}
+}
+
+@media only screen and (min-width: 1152px) {
+	.grid-container--fill {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.grid-container--fill.music {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
