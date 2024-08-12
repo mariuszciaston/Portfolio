@@ -114,7 +114,10 @@ const topBarScrollFixIOS = () => {
 document.addEventListener('DOMContentLoaded', () => {
 	initTheme();
 
-	document.querySelector('.grid-container.webdev').innerHTML = generateProjects(webDevProjects, 'webdev');
+	const webDevContainer = document.querySelector('.grid-container.webdev');
+	if (webDevContainer) {
+		webDevContainer.innerHTML = generateProjects(webDevProjects, 'webdev');
+	}
 
 	watchTheme();
 	document.querySelector('#theme-switch')?.addEventListener('click', toggleTheme);
