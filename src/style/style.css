@@ -189,7 +189,7 @@ section.hidden > .grid-container--fill > * {
 .item img {
 	max-width: 100%;
 	border-radius: 1rem;
-	border: solid 0.0625rem grey;
+	border: 0.03125rem solid grey;
 	box-sizing: border-box;
 	width: 100%;
 	aspect-ratio: 4/3;
@@ -243,7 +243,7 @@ a:not(.item):hover {
 }
 
 hr {
-	border: 0.0625rem solid var(--black);
+	border: 0.03125rem solid var(--black);
 	margin: 0 1rem;
 }
 
