@@ -193,7 +193,6 @@ section.hidden > .grid-container--fill > * {
 	box-sizing: border-box;
 	width: 100%;
 	aspect-ratio: 4/3;
-	/* object-fit: contain; */
 	background-color: white;
 }
 
