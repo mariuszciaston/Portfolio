@@ -4,7 +4,7 @@ const webDevProjects = [
 		imgSrc: 'webdev/Shopping-Cart.png',
 		title: 'FakeSTORE',
 		year: '2025',
-		description: 'store with basic shopping cart funcionality',
+		description: 'a mock store with basic shopping cart functionality',
 	},
 
 	{
@@ -44,7 +44,7 @@ const webDevProjects = [
 		imgSrc: 'webdev/Weather-App.png',
 		title: 'Weather App',
 		year: '2023',
-		description: 'search by city or based on location, background color is based on temperature',
+		description: 'search by city or use location, color is based on temperature',
 	},
 	{
 		href: 'https://mariuszciaston.github.io/Tic-Tac-Toe/',
