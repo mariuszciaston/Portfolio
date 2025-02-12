@@ -90,7 +90,7 @@ header {
 	color: var(--white);
 }
 
-#social {
+#icons {
 	display: flex;
 	gap: 1rem;
 	display: grid;
@@ -98,7 +98,7 @@ header {
 	justify-items: center;
 }
 
-#social > * {
+#icons > * {
 	max-width: 2rem;
 }
 
@@ -281,7 +281,7 @@ hr {
 		display: none;
 	}
 
-	#social {
+	#icons {
 		grid-template-columns: repeat(4, 1fr);
 	}
 }
