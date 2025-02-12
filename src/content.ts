@@ -1,17 +1,42 @@
 const webDevProjects = [
 	{
+		href: 'https://shopping-cart-mariuszciaston.netlify.app/',
+		imgSrc: 'webdev/Shopping-Cart.png',
+		title: 'FakeSTORE',
+		year: '2025',
+		description: 'store with basic shopping cart funcionality',
+	},
+
+	{
+		href: 'https://pokememo-mariuszciaston.netlify.app/',
+		imgSrc: 'webdev/PokeMemo.png',
+		title: 'PokeMemo',
+		year: '2024',
+		description: 'Pokemon memory card game',
+	},
+
+	{
+		href: 'https://cv-generator-mariuszciaston.netlify.app/',
+		imgSrc: 'webdev/CV-Generator.png',
+		title: 'CV Generator',
+		year: '2024',
+		description: 'create resume and export it to pdf file',
+	},
+
+	{
 		href: 'https://mariuszciaston.github.io/Battleship/',
 		imgSrc: 'webdev/Battleship.png',
 		title: 'Battleship',
 		year: '2024',
-		description: 'gra w statki',
+		description: 'game with PvC, CvC modes, speed change and laser sounds',
 	},
+
 	{
 		href: 'https://mariuszciaston.github.io/minimaLIST/',
 		imgSrc: 'webdev/minimaList.png',
 		title: 'minimaLIST',
 		year: '2023',
-		description: 'aplikacja typu lista zadań',
+		description: 'to-do list app',
 	},
 
 	{
@@ -19,44 +44,49 @@ const webDevProjects = [
 		imgSrc: 'webdev/Weather-App.png',
 		title: 'Weather App',
 		year: '2023',
-		description: 'aplikacja pogodowa',
+		description: 'search by city or based on location, background color is based on temperature',
 	},
 	{
 		href: 'https://mariuszciaston.github.io/Tic-Tac-Toe/',
 		imgSrc: 'webdev/Tic-Tac-Toe.png',
 		title: 'Tic Tac Toe',
 		year: '2023',
-		description: 'gra kółko i krzyżyk',
+		description: 'game with PvC, PvP modes and three difficulty levels',
 	},
 	{
 		href: 'https://mariuszciaston.github.io/Sign-Up_Form/',
 		imgSrc: 'webdev/Sign-Up_Form.png',
 		title: 'Sign-Up Form',
 		year: '2023',
-		description: 'prototyp formularza rejestracyjnego',
+		description: 'registration form with data validation',
 	},
 	{
 		href: 'https://mariuszciaston.github.io/Admin-Dashboard/',
 		imgSrc: 'webdev/Admin-Dashboard.png',
 		title: 'Admin Dashboard',
 		year: '2023',
-		description: 'prototyp panelu administracyjnego',
+		description: 'administrative panel prototype',
 	},
-
+	{
+		href: 'https://mariuszciaston.github.io/Restaurant-Page/',
+		imgSrc: 'webdev/Restaurant-Page.png',
+		title: 'Batman Pizza',
+		year: '2023',
+		description: 'simple restaurant page',
+	},
 	{
 		href: 'https://mariuszciaston.github.io/Library/',
 		imgSrc: 'webdev/Library.png',
 		title: 'Library',
 		year: '2022',
-		description: 'aplikacja do zapisywania książek',
+		description: 'app for saving books',
 	},
-
 	{
 		href: 'https://mariuszciaston.github.io/Etch-A-Sketch/',
 		imgSrc: 'webdev/Etch-A-Sketch.png',
 		title: 'Etch-A-Sketch',
 		year: '2022',
-		description: 'aplikacja do tworzenia pixel artu',
+		description: 'pixel art drawing app',
 	},
 
 	{
@@ -64,29 +94,28 @@ const webDevProjects = [
 		imgSrc: 'webdev/Calculator.png',
 		title: 'Calculator',
 		year: '2022',
-		description: 'aplikacja kalkulator',
+		description: 'app',
 	},
-
 	{
 		href: 'https://mariuszciaston.github.io/Rock-Paper-Scissors/',
 		imgSrc: 'webdev/Rock-Paper-Scissors.png',
 		title: 'Rock Paper Scissors',
 		year: '2022',
-		description: 'gra papier, kamień, nożyce',
+		description: 'game',
 	},
 	{
 		href: 'https://sdn.org.pl/',
 		imgSrc: 'webdev/Sdn.org.pl.png',
 		title: 'Sdn.org.pl',
 		year: '2022',
-		description: 'strona internetowa Stowarzyszenia Dobrej Nadziei',
+		description: 'website of the Good Hope Association with a WordPress theme created from scratch',
 	},
 	{
 		href: 'https://film.asp.krakow.pl/',
 		imgSrc: 'webdev/Film.asp.krakow.pl.png',
 		title: 'Film.asp.krakow.pl',
 		year: '2020',
-		description: 'strona internetowa Pracowni Filmu Animowanego ASP Kraków',
+		description: 'website of the Animation Film Studio of the Academy of Fine Arts in Kraków',
 	},
 ];
 
@@ -146,28 +175,28 @@ const musicProjects = [
 			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538817&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true',
 		title: 'Strasznie',
 		year: '2016',
-		description: 'eksperymentalny utwór elektroniczny',
+		description: 'experimental electronic',
 	},
 	{
 		iframeSrc:
 			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538397&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true',
 		title: 'Nightmare',
 		year: '2012',
-		description: 'Dark dubstep',
+		description: 'dark dubstep',
 	},
 	{
 		iframeSrc:
 			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822538145&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true',
 		title: 'You Like It Remix',
 		year: '2008',
-		description: 'Electro house',
+		description: 'electro house',
 	},
 	{
 		iframeSrc:
 			'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1822537608&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true',
 		title: 'Friday Night',
 		year: '2006',
-		description: 'Tribal techno',
+		description: 'tribal techno',
 	},
 ];
 
@@ -177,7 +206,7 @@ const graphicProjects = [
 		imgSrc: 'graphics/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
 		title: 'Candis',
 		year: '2022',
-		description: 'Ulotka DL',
+		description: 'DL flyer',
 	},
 
 	{
@@ -185,7 +214,7 @@ const graphicProjects = [
 		imgSrc: 'graphics/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
 		title: 'Uzależnienia Behawioralne',
 		year: '2018',
-		description: 'Ulotka DL',
+		description: 'DL flyer',
 	},
 
 	{
@@ -193,7 +222,7 @@ const graphicProjects = [
 		imgSrc: 'graphics/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
 		title: 'Candis',
 		year: '2021',
-		description: 'Ulotka DL',
+		description: 'DL flyer',
 	},
 
 	{
@@ -201,7 +230,7 @@ const graphicProjects = [
 		imgSrc: 'graphics/Uzaleznienia-Behawioralne-2019-Batorego-Ulotka-DL.png',
 		title: 'Uzależnienia Behawioralne',
 		year: '2019',
-		description: 'Ulotka DL',
+		description: 'DL flyer',
 	},
 ];
 
