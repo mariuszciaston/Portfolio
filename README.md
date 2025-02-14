@@ -1,6 +1,7 @@
-My portfolio website v1.0 🔥🔥🔥
+My portfolio website v1.1 🔥🔥🔥
 
 [Live Demo](https://mariuszciaston.github.io/Portfolio/) :point_left: <br><br>
 
-![Portfolio.png](Portfolio.png)| 
+![Portfolio-v1.1_light.png](Portfolio-v1.1_light.png)| 
 ------------- | 
+![Portfolio-v1.1_dark.png](Portfolio-v1.1_dark.png)| 
