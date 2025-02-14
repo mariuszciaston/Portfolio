@@ -24,6 +24,14 @@ const webDevProjects = [
 	},
 
 	{
+		href: 'https://mariuszciaston.github.io/Portfolio/',
+		imgSrc: 'webdev/Portfolio-v1.1_dark.png',
+		title: 'Portfolio',
+		year: '2024',
+		description: 'my own portfolio website',
+	},
+
+	{
 		href: 'https://mariuszciaston.github.io/Battleship/',
 		imgSrc: 'webdev/Battleship.png',
 		title: 'Battleship',
