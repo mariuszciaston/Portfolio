@@ -17,7 +17,7 @@ function generateProjects(
 				return project.iframeSrc
 					? `
 					<div class="item">
-					<iframe style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem; border: solid 0.0625rem grey; box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}"></iframe>
+					<iframe style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem;  box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" |referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}"></iframe>
 					</div>
                 `
 					: `
@@ -29,18 +29,23 @@ function generateProjects(
 
 			if (type === 'music') {
 				return `
-					<div class="item">
+				<div class="item">
 					<iframe width="100%" scrolling="no" frameborder="yes" allow="autoplay" style="border-radius: 1rem;" src="${project.iframeSrc}"></iframe>
-					<p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
-                    </div>
+						<div class="text">
+							<p class="bold">${project.title}</p>
+							<p class="secondary"> ${project.description} | ${project.year}</p>
+						</div>
+                </div>
                 `;
 			}
 			return `
 			<a href="${project.href}" target="_blank" class="item">
 				<img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
-				<p><b>${project.title}</b> / ${project.year} / ${project.description}</p>
-			</a>
-		`;
+					<div class="text">
+						<p class="bold">${project.title}</p>
+						<p class="secondary"> ${project.description} | ${project.year}</p>
+					</div>
+			</a>`;
 		})
 		.join('');
 }
