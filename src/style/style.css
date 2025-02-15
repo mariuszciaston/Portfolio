@@ -188,6 +188,9 @@ section.hidden > .grid-container--fill > * {
 	transition: filter 0.5s ease;
 	background-color: var(--card-bcg);
 	border: 0.03125rem solid var(--card-border);
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
 }
 
 .item:hover {
@@ -210,8 +213,10 @@ section.hidden > .grid-container--fill > * {
 		hsla(0, 0%, 0%, 0.1) 0px 1px 2px -1px;
 	box-sizing: border-box;
 	width: 100%;
+	object-fit: cover;
 	aspect-ratio: 4/3;
 	background-color: white;
+	flex: 0;
 }
 
 .item:hover img {
@@ -224,7 +229,8 @@ section.hidden > .grid-container--fill > * {
 }
 
 .text {
-	padding: 0.75rem 0 0.25rem 0;
+	padding: 0.25rem 0;
+	flex: 1;
 }
 
 p.bold {
@@ -237,12 +243,6 @@ p.secondary {
 	font-size: 0.875rem;
 	color: var(--text-secondary);
 	margin: 0.25rem 0 0 0;
-}
-
-.grid-element {
-	padding: 1rem;
-	color: white;
-	aspect-ratio: 4/3;
 }
 
 footer {
