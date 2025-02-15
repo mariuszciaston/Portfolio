@@ -155,6 +155,10 @@ h2 {
 	box-shadow: none;
 }
 
+.theme-dark .grid-container--fill img {
+	box-shadow: none;
+}
+
 section h2 {
 	cursor: pointer;
 	text-decoration: none;
