@@ -238,6 +238,7 @@ section.hidden > .grid-container--fill > * {
 	box-sizing: border-box;
 	object-fit: contain;
 	aspect-ratio: 4/3;
+	flex: 1;
 }
 
 .item p {
