@@ -224,6 +224,11 @@ section.hidden > .grid-container--fill > * {
 	border: 0.03125rem solid var(--card-hover);
 }
 
+.grid-container .item-container {
+	filter: grayscale(0) blur(0);
+	transition: filter 0.5s ease;
+}
+
 .grid-container.focus .item-container {
 	filter: grayscale(1) blur(1px);
 	transition: filter 0.5s ease;
