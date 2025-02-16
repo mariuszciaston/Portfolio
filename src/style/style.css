@@ -56,6 +56,15 @@ body {
 	}
 }
 
+hr {
+	border: 0.03125rem solid var(--text);
+	margin: 0;
+}
+
+hr.margin {
+	margin: 0 1rem;
+}
+
 header {
 	width: 100%;
 	max-width: 2560px;
@@ -65,11 +74,11 @@ header {
 	z-index: 1;
 	touch-action: none;
 	overflow: auto;
+	padding: 0;
 }
 
 #heading {
 	padding: 1rem;
-	padding-bottom: 1rem;
 	margin: 0;
 	font-size: 1.9rem;
 	letter-spacing: 0.1rem;
@@ -113,19 +122,21 @@ main {
 	scrollbar-width: none;
 	display: flex;
 	flex-direction: column;
-	padding-top: 7.375rem;
-	padding-bottom: 8.011rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 7.369rem;
+	padding-bottom: 8.012rem;
 }
 
 .grid-container {
 	display: grid;
 	gap: 2rem;
-	padding: 2rem 1rem;
+	padding: 2rem 0;
 }
 
 h2 {
 	padding: 0;
-	margin: 2rem 1rem 0rem 1rem;
+	margin: 2rem 0 0 0;
 	font-size: 1.45rem;
 	font-weight: 300;
 	display: flex;
@@ -314,11 +325,6 @@ a:not(.item):hover {
 	text-decoration: underline;
 }
 
-hr {
-	border: 0.03125rem solid var(--text);
-	margin: 0 1rem;
-}
-
 #focus-switch,
 #theme-switch {
 	background: none;
@@ -360,20 +366,22 @@ hr {
 }
 
 @media only screen and (min-width: 576px) {
-	body {
-		margin: 0 1rem;
+	#heading,
+	main,
+	#signature {
+		padding-left: 2rem;
+		padding-right: 2rem;
 	}
 
-	header,
-	footer {
-		width: calc(100% - 2rem);
+	hr.margin {
+		margin: 0 2rem;
 	}
 }
 
-@media only screen and (min-width: 613px) {
+@media only screen and (min-width: 614px) {
 	main {
-		padding-top: 4.184rem;
-		padding-bottom: 6.005rem;
+		padding-top: 4.185rem;
+		padding-bottom: 6.006rem;
 	}
 }
 
