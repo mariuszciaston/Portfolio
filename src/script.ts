@@ -16,36 +16,44 @@ function generateProjects(
 			if (type === 'mocap') {
 				return project.iframeSrc
 					? `
-					<div class="item">
-					<iframe style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem;  box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" |referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}"></iframe>
-					</div>
-                `
+                    <div class="item-container">
+                        <div class="item">
+                            <iframe style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem;  box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" |referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}"></iframe>
+                        </div>
+                    </div>
+                    `
 					: `
-                    <a href="${project.href}" target="_blank" class="item">
-                        <img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
-                    </a>
-                `;
+                    <div class="item-container">
+                        <a href="${project.href}" target="_blank" class="item">
+                            <img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
+                        </a>
+                    </div>
+                    `;
 			}
 
 			if (type === 'music') {
 				return `
-				<div class="item">
-					<iframe width="100%" scrolling="no" frameborder="yes" allow="autoplay" style="border-radius: 1rem;" src="${project.iframeSrc}"></iframe>
-						<div class="text">
-							<p class="bold">${project.title}</p>
-							<p class="secondary"> ${project.description} | ${project.year}</p>
-						</div>
+                <div class="item-container">
+                    <div class="item">
+                        <iframe width="100%" scrolling="no" frameborder="no" allow="autoplay" style="border-radius: 1rem;" src="${project.iframeSrc}"></iframe>
+                        <div class="text">
+                            <p class="bold">${project.title}</p>
+                            <p class="secondary"> ${project.description} | ${project.year}</p>
+                        </div>
+                    </div>
                 </div>
                 `;
 			}
 			return `
-			<a href="${project.href}" target="_blank" class="item">
-				<img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
-					<div class="text">
-						<p class="bold">${project.title}</p>
-						<p class="secondary"> ${project.description} | ${project.year}</p>
-					</div>
-			</a>`;
+            <div class="item-container">
+                <a href="${project.href}" target="_blank" class="item">
+                    <img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
+                    <div class="text">
+                        <p class="bold">${project.title}</p>
+                        <p class="secondary"> ${project.description} | ${project.year}</p>
+                    </div>
+                </a>
+            </div>`;
 		})
 		.join('');
 }
@@ -116,6 +124,38 @@ const topBarScrollFixIOS = () => {
 	}
 };
 
+function apply3DEffect() {
+	const containers = document.querySelectorAll('.item-container');
+
+	containers.forEach((container) => {
+		const item = container.querySelector('.item') as HTMLElement;
+		if (item.querySelector('iframe')) return;
+
+		container.addEventListener('mousemove', (e: MouseEvent) => {
+			item.classList.remove('leaving');
+			const rect = container.getBoundingClientRect();
+			const x = e.clientX - rect.left;
+			const y = e.clientY - rect.top;
+
+			const centerX = rect.width / 2;
+			const centerY = rect.height / 2;
+			const rotateY = ((x - centerX) / centerX) * 5;
+			const rotateX = -((y - centerY) / centerY) * 5;
+
+			item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+		});
+
+		container.addEventListener('mouseleave', () => {
+			item.classList.add('leaving');
+			item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+
+			setTimeout(() => {
+				item.classList.remove('leaving');
+			}, 1000);
+		});
+	});
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 	initTheme();
 
@@ -152,6 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				document.querySelector('.grid-container.graphics').innerHTML = generateProjects(graphicProjects, 'graphics');
 				graphicsGenerated = true;
 			}
+
+			setTimeout(apply3DEffect, 100);
 		});
 	});
 
@@ -160,4 +202,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	toggleFocus();
+	apply3DEffect();
 });

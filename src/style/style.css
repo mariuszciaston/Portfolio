@@ -110,14 +110,11 @@ header {
 main {
 	flex: 1;
 	overflow: auto;
+	scrollbar-width: none;
 	display: flex;
 	flex-direction: column;
 	padding-top: 7.375rem;
 	padding-bottom: 8.011rem;
-}
-
-main::-webkit-scrollbar {
-	display: none;
 }
 
 .grid-container {
@@ -143,20 +140,29 @@ h2 {
 	grid-template-columns: 1fr;
 }
 
-.grid-container--fill.mocap > * {
+.grid-container--fill.mocap > .item-container > * {
 	padding: 0;
 }
 
-.grid-container--fill.mocap > *:hover {
-	border: 0.03125rem solid var(--card-border);
+.grid-container--fill.mocap .item {
+	border: none;
 }
 
-.grid-container--fill.mocap > * > img {
-	box-shadow: none;
+.grid-container--fill.mocap .item:hover {
+	background-color: transparent !important;
+}
+
+.theme-dark .grid-container--fill.mocap > .item-container > .item > * {
+	border: 0.03125rem solid var(--card-border);
 }
 
 .theme-dark .grid-container--fill img {
 	box-shadow: none;
+}
+
+.grid-container--fill.mocap img {
+	box-shadow: none;
+	border: none !important;
 }
 
 section h2 {
@@ -189,12 +195,12 @@ section.hidden > .grid-container--fill > * {
 	color: var(--text);
 	padding: 1rem;
 	border-radius: 1rem;
-	transition: filter 0.5s ease;
 	background-color: var(--card-bcg);
 	border: 0.03125rem solid var(--card-border);
 	display: flex;
 	flex-direction: column;
 	gap: 0.75rem;
+	flex: 1;
 }
 
 .item:hover {
@@ -202,12 +208,14 @@ section.hidden > .grid-container--fill > * {
 	border: 0.03125rem solid var(--card-hover);
 }
 
-.grid-container.focus .item {
+.grid-container.focus .item-container {
 	filter: grayscale(1) blur(1px);
+	transition: filter 0.5s ease;
 }
 
-.grid-container.focus .item:hover {
+.grid-container.focus .item-container:hover {
 	filter: grayscale(0) blur(0);
+	transition: filter 0.5s ease;
 }
 
 .item img {
@@ -218,11 +226,35 @@ section.hidden > .grid-container--fill > * {
 	box-sizing: border-box;
 	object-fit: contain;
 	aspect-ratio: 4/3;
+
+	margin: 0.35rem;
+	margin-bottom: 0.2rem;
 }
 
 .item p {
 	line-height: 1.5em;
 	margin: 0;
+}
+
+.item-container {
+	background-color: transparent;
+	display: flex;
+	border-radius: 1rem;
+}
+
+.item {
+	transform-style: preserve-3d;
+	transform: perspective(1000px);
+	transition: transform 0.1s ease;
+}
+
+.item.leaving {
+	transition: transform 0.4s ease;
+}
+
+.item img {
+	transform: translateZ(20px);
+	will-change: transform;
 }
 
 .text {
