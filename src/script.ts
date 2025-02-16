@@ -25,7 +25,9 @@ function generateProjects(
 					: `
                     <div class="item-container">
                         <a href="${project.href}" target="_blank" class="item">
-                            <img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
+                            <div class="img-container">
+							<img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
+							</div>
                         </a>
                     </div>
                     `;
@@ -47,7 +49,9 @@ function generateProjects(
 			return `
             <div class="item-container">
                 <a href="${project.href}" target="_blank" class="item">
-                    <img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
+				<div class="img-container">
+				<img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
+				</div>
                     <div class="text">
                         <p class="bold">${project.title}</p>
                         <p class="secondary"> ${project.description} | ${project.year}</p>
