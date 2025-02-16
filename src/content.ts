@@ -131,27 +131,27 @@ const mocapProjects = [
 	{
 		href: 'mocap/mocap-1-large.jpg',
 		imgSrc: 'mocap/mocap-1.jpg',
-		description: 'mocap-1.jpg',
+		title: 'mocap-1',
 	},
 	{
 		href: 'mocap/mocap-2-large.jpg',
 		imgSrc: 'mocap/mocap-2.jpg',
-		description: 'mocap-2.jpg',
+		title: 'mocap-2',
 	},
 	{
 		href: 'mocap/mocap-3-large.jpg',
 		imgSrc: 'mocap/mocap-3.jpg',
-		description: 'mocap-3.jpg',
+		title: 'mocap-3',
 	},
 	{
 		href: 'mocap/mocap-4-large.jpg',
 		imgSrc: 'mocap/mocap-4.jpg',
-		description: 'mocap-4.jpg',
+		title: 'mocap-4',
 	},
 	{
 		href: 'mocap/mocap-5-large.jpg',
 		imgSrc: 'mocap/mocap-5.jpg',
-		description: 'mocap-5.jpg',
+		title: 'mocap-5',
 	},
 
 	{
