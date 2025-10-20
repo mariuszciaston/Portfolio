@@ -209,13 +209,16 @@ section.hidden > .grid-container--fill > * {
 .item {
 	text-decoration: none;
 	color: var(--text);
-	padding: 1rem;
+	padding: 0.75rem;
 	border-radius: 1rem;
+	padding: clamp(0.75rem, calc((12 / 288) * 100cqw), 1.5rem);
+	border-radius: clamp(1rem, calc((16 / 288) * 100cqw), 2rem);
 	background-color: var(--card-bcg);
 	border: 0.03125rem solid var(--card-border);
 	display: flex;
 	flex-direction: column;
 	gap: 0.75rem;
+	gap: clamp(0.75rem, calc((12 / 288) * 100cqw), 1.5rem);
 	flex: 1;
 }
 
@@ -227,6 +230,7 @@ section.hidden > .grid-container--fill > * {
 .grid-container .item-container {
 	filter: grayscale(0);
 	transition: filter 0.5s ease;
+	container-type: inline-size;
 }
 
 .grid-container.grayscale .item-container {
@@ -264,12 +268,13 @@ section.hidden > .grid-container--fill > * {
 	background-color: transparent;
 	display: flex;
 	border-radius: 1rem;
+	will-change: transform;
 }
 
 .item {
 	transform-style: preserve-3d;
-	transform: perspective(1000px);
 	transition: transform 0.1s ease;
+	will-change: transform;
 }
 
 .item.leaving {
@@ -282,7 +287,7 @@ section.hidden > .grid-container--fill > * {
 }
 
 .text {
-	padding: 0.25rem 0;
+	padding: 0 0.25rem;
 	flex: 1;
 }
 
@@ -296,6 +301,8 @@ p.secondary {
 	font-size: 0.875rem;
 	color: var(--text-secondary);
 	margin: 0.25rem 0 0 0;
+	margin-top: clamp(0.25rem, calc((4 / 288) * 100cqw), 0.5rem);
+	/* margin: clamp(0.25rem, calc((4 / 288) * 100cqw), 0.5rem) 0; */
 }
 
 footer {
