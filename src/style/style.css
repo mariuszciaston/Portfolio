@@ -225,18 +225,16 @@ section.hidden > .grid-container--fill > * {
 }
 
 .grid-container .item-container {
-	filter: grayscale(0) blur(0);
+	filter: grayscale(0);
 	transition: filter 0.5s ease;
 }
 
-.grid-container.focus .item-container {
-	filter: grayscale(1) blur(1px);
-	transition: filter 0.5s ease;
+.grid-container.grayscale .item-container {
+	filter: grayscale(1);
 }
 
-.grid-container.focus .item-container:hover {
-	filter: grayscale(0) blur(0);
-	transition: filter 0.5s ease;
+.grid-container.grayscale .item-container:hover {
+	filter: grayscale(0);
 }
 
 .item .img-container {
@@ -330,7 +328,7 @@ a:not(.item):hover {
 	text-decoration: underline;
 }
 
-#focus-switch,
+#grayscale-switch,
 #theme-switch {
 	background: none;
 	border: none;
@@ -341,7 +339,23 @@ a:not(.item):hover {
 	outline: inherit;
 }
 
-.fa-eye,
+.fa-circle-half-stroke {
+	transform: scale(1) rotateY(0deg);
+}
+
+.fa-circle-half-stroke:hover {
+	transform: scale(1.2) rotateY(0deg);
+}
+
+.fa-circle-half-stroke.flip {
+	transform: scale(1) rotateY(180deg);
+}
+
+.fa-circle-half-stroke.flip:hover {
+	transform: scale(1.2) rotateY(180deg);
+}
+
+.fa-circle-half-stroke,
 .fa-sun,
 .fa-moon,
 .fa-github,
@@ -351,7 +365,6 @@ a:not(.item):hover {
 	cursor: pointer;
 }
 
-.fa-eye:hover,
 .fa-sun:hover,
 .fa-moon:hover,
 .fa-github:hover,
@@ -361,7 +374,7 @@ a:not(.item):hover {
 }
 
 @media (not (any-pointer: fine)) {
-	#focus-switch {
+	#grayscale-switch {
 		display: none;
 	}
 

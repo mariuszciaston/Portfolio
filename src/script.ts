@@ -104,17 +104,16 @@ function watchTheme() {
 	});
 }
 
-function toggleFocus() {
-	const focusIcon = document.querySelector('#focus-switch > i');
+function toggleGrayscale() {
+	const grayscaleIcon = document.querySelector('#grayscale-switch > i');
 
-	focusIcon?.addEventListener('click', () => {
-		focusIcon.classList.toggle('fa-solid');
-		focusIcon.classList.toggle('fa-regular');
+	grayscaleIcon?.addEventListener('click', () => {
+		grayscaleIcon.classList.toggle('flip');
 
 		const gridContainers = document.querySelectorAll('.grid-container');
 
 		gridContainers.forEach((gridContainer) => {
-			gridContainer.classList.toggle('focus');
+			gridContainer.classList.toggle('grayscale');
 		});
 	});
 }
@@ -205,6 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.location.reload();
 	});
 
-	toggleFocus();
+	toggleGrayscale();
 	apply3DEffect();
 });
