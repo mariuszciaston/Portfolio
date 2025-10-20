@@ -181,22 +181,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	sectionTitles.forEach((sectionTitle) => {
 		sectionTitle.addEventListener('click', () => {
-			sectionTitle.parentElement.classList.toggle('hidden');
-
 			if (sectionTitle.parentElement.id === 'second' && !mocapGenerated) {
 				document.querySelector('.grid-container.mocap').innerHTML = generateProjects(mocapProjects, 'mocap');
 				mocapGenerated = true;
+				apply3DEffect();
 			}
 			if (sectionTitle.parentElement.id === 'third' && !musicGenerated) {
 				document.querySelector('.grid-container.music').innerHTML = generateProjects(musicProjects, 'music');
 				musicGenerated = true;
+				apply3DEffect();
 			}
 			if (sectionTitle.parentElement.id === 'fourth' && !graphicsGenerated) {
 				document.querySelector('.grid-container.graphics').innerHTML = generateProjects(graphicProjects, 'graphics');
 				graphicsGenerated = true;
+				apply3DEffect();
 			}
 
-			setTimeout(apply3DEffect, 100);
+			sectionTitle.parentElement.classList.toggle('hidden');
 		});
 	});
 
