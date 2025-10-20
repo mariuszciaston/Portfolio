@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	});
 
-	document.querySelector('#heading h1').addEventListener('click', () => {
+	document.querySelector('#heading h1')?.addEventListener('click', () => {
 		window.location.reload();
 	});
 
