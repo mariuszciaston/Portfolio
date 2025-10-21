@@ -268,13 +268,11 @@ section.hidden > .grid-container--fill > * {
 	background-color: transparent;
 	display: flex;
 	border-radius: 1rem;
-	will-change: transform;
 }
 
 .item {
 	transform-style: preserve-3d;
 	transition: transform 0.1s ease;
-	will-change: transform;
 }
 
 .item.leaving {
@@ -282,8 +280,8 @@ section.hidden > .grid-container--fill > * {
 }
 
 .item img {
-	transform: translateZ(20px);
-	will-change: transform;
+	transform: translateZ(1.25rem);
+	transform: translateZ(clamp(1.25rem, calc((20 / 288) * 100cqw), 2.5rem));
 }
 
 .text {
