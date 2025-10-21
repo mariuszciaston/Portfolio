@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
-  "version": "1.0",
-  "description": "My portfolio website v1.0",
+  "version": "1.2",
+  "description": "My portfolio website v1.2",
   "private": true,
   "scripts": {
     "jest": "jest",
