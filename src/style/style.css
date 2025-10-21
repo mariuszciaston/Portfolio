@@ -273,6 +273,11 @@ section.hidden > .grid-container--fill > * {
 .item {
 	transform-style: preserve-3d;
 	transition: transform 0.1s ease;
+
+	--perspective: 1000px;
+	--perspective: clamp(1000px, calc((1000 / 288) * 100cqw), 2083.33px);
+
+	transform: perspective(var(--perspective)) rotateX(0) rotateY(0);
 }
 
 .item.leaving {

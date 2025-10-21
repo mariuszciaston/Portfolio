@@ -129,30 +129,10 @@ const topBarScrollFixIOS = () => {
 
 function apply3DEffect() {
 	const containers = document.querySelectorAll('.item-container');
-	const minWidth = 248;
-	const maxWidth = 602;
-
-	function getPerspective(width: number): number {
-		const minPerspectiveValue = 1000;
-		const maxPerspectiveValue = 2431;
-
-		if (width <= minWidth) return minPerspectiveValue;
-		if (width >= maxWidth) return maxPerspectiveValue;
-		const t = (width - minWidth) / (maxWidth - minWidth);
-		return minPerspectiveValue + t * (maxPerspectiveValue - minPerspectiveValue);
-	}
-
-	function setInitialPerspective(container: Element, item: HTMLElement) {
-		const rect = container.getBoundingClientRect();
-		const perspective = getPerspective(rect.width);
-		item.style.transform = `perspective(${perspective}px) rotateX(0) rotateY(0)`;
-	}
 
 	containers.forEach((container) => {
 		const item = container.querySelector('.item') as HTMLElement;
 		if (item.querySelector('iframe')) return;
-
-		setInitialPerspective(container, item);
 
 		container.addEventListener('mousemove', (e: MouseEvent) => {
 			item.classList.remove('leaving');
@@ -166,24 +146,17 @@ function apply3DEffect() {
 			const rotateY = ((x - centerX) / centerX) * 5;
 			const rotateX = -((y - centerY) / centerY) * 5;
 
-			const perspective = getPerspective(rect.width);
-
-			item.style.transform = `perspective(${perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+			item.style.transform = `perspective(var(--perspective)) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 		});
 
 		container.addEventListener('mouseleave', () => {
-			const rect = container.getBoundingClientRect();
-			const perspective = getPerspective(rect.width);
-
 			item.classList.add('leaving');
-			item.style.transform = `perspective(${perspective}px) rotateX(0) rotateY(0)`;
+			item.style.transform = `perspective(var(--perspective)) rotateX(0) rotateY(0)`;
 
 			setTimeout(() => {
 				item.classList.remove('leaving');
 			}, 1000);
 		});
-
-		window.addEventListener('resize', () => setInitialPerspective(container, item));
 	});
 }
 
@@ -209,23 +182,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	sectionTitles.forEach((sectionTitle) => {
 		sectionTitle.addEventListener('click', () => {
+			sectionTitle.parentElement.classList.toggle('hidden');
+
 			if (sectionTitle.parentElement.id === 'second' && !mocapGenerated) {
 				document.querySelector('.grid-container.mocap').innerHTML = generateProjects(mocapProjects, 'mocap');
 				mocapGenerated = true;
-				apply3DEffect();
 			}
 			if (sectionTitle.parentElement.id === 'third' && !musicGenerated) {
 				document.querySelector('.grid-container.music').innerHTML = generateProjects(musicProjects, 'music');
 				musicGenerated = true;
-				apply3DEffect();
 			}
 			if (sectionTitle.parentElement.id === 'fourth' && !graphicsGenerated) {
 				document.querySelector('.grid-container.graphics').innerHTML = generateProjects(graphicProjects, 'graphics');
 				graphicsGenerated = true;
-				apply3DEffect();
 			}
-
-			sectionTitle.parentElement.classList.toggle('hidden');
 		});
 	});
 
