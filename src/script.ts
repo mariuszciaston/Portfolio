@@ -23,6 +23,7 @@ function generateProjects(
                     </div>
                     `
 					: `
+					<div class="item-container-wrap">
                     <div class="item-container">
                         <a href="${project.href}" target="_blank" class="item">
                             <div class="img-container">
@@ -30,6 +31,7 @@ function generateProjects(
 							</div>
                         </a>
                     </div>
+					</div>
                     `;
 			}
 
@@ -47,6 +49,7 @@ function generateProjects(
                 `;
 			}
 			return `
+			<div class="item-container-wrap">
             <div class="item-container">
                 <a href="${project.href}" target="_blank" class="item">
 				<div class="img-container">
@@ -57,7 +60,8 @@ function generateProjects(
                         <p class="secondary"> ${project.description} | ${project.year}</p>
                     </div>
                 </a>
-            </div>`;
+            </div>
+			</div>`;
 		})
 		.join('');
 }
