@@ -9,7 +9,8 @@
     "build": "webpack",
     "watch": "watch 'npm run build' ./src",
     "start": "npm run watch & npx webpack serve",
-    "gitlive": "git subtree push --prefix dist origin gh-pages"
+    "predeploy": "git add -f dist && git commit -m 'force add dist folder'",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
   "author": "Mariusz Ciastoń",
