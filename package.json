@@ -8,7 +8,7 @@
     "watch": "watch 'npm run build' ./src",
     "start": "npm run watch & npx webpack serve",
     "predeploy": "git add -f dist && git commit -m 'force add dist folder'",
-    "deploy": "git subtree push --prefix dist origin gh-pages",
+    "deploy": "git push origin `git subtree split --prefix dist main`:gh-pages --force",
     "stop tracking dist": "git rm -r --cached dist && git commit -m 'Stop tracking dist folder'"
   },
   "keywords": [],
