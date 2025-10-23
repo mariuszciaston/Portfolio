@@ -180,6 +180,8 @@ section h2:hover {
 
 section.hidden .grid-container {
 	padding: 1rem 0;
+	height: 0;
+	visibility: hidden;
 }
 
 section.hidden h2:hover {
@@ -191,7 +193,7 @@ section.hidden h2:hover::before {
 }
 
 section.hidden > .grid-container--fill > * {
-	display: none;
+	/* display: none; */
 }
 
 .item {
