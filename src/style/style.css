@@ -192,9 +192,9 @@ section.hidden h2:hover::before {
 	content: '+\00a0';
 }
 
-section.hidden > .grid-container--fill > * {
-	/* display: none; */
-}
+/* section.hidden > .grid-container--fill > * {
+	display: none;
+} */
 
 .item {
 	text-decoration: none;
@@ -231,7 +231,6 @@ section.hidden > .grid-container--fill > * {
 }
 
 .grid-container .item-container {
-	filter: grayscale(0);
 	transition: filter 0.5s ease;
 	container-type: inline-size;
 }
@@ -285,6 +284,7 @@ section.hidden > .grid-container--fill > * {
 	--perspective: 1000px;
 	--perspective: clamp(1000px, calc((1000 / 288) * 100cqw), 2083.33px);
 	transform: perspective(var(--perspective)) rotateX(0) rotateY(0);
+	will-change: transform;
 }
 
 .item.leaving {
@@ -294,7 +294,6 @@ section.hidden > .grid-container--fill > * {
 .item img {
 	transform: translateZ(1.25rem);
 	transform: translateZ(clamp(1.25rem, calc((20 / 288) * 100cqw), 2.5rem));
-	will-change: transform;
 }
 
 .text {
