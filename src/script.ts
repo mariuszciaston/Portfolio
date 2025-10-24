@@ -12,7 +12,7 @@ function generateProjects(
 	type: 'webdev' | 'mocap' | 'music' | 'graphics'
 ) {
 	return array
-		.map((project) => {
+		.map((project, index) => {
 			if (type === 'mocap') {
 				return project.iframeSrc
 					? `
@@ -48,12 +48,16 @@ function generateProjects(
                 </div>
                 `;
 			}
+			const isFirstWebdevImage = type === 'webdev' && index === 0;
+			const loadingAttr = isFirstWebdevImage ? '' : 'loading="lazy"';
+			const fetchPriorityAttr = isFirstWebdevImage ? 'fetchpriority="high"' : '';
+
 			return `
 			<div class="item-container-wrap">
             <div class="item-container">
                 <a href="${project.href}" target="_blank" class="item">
 				<div class="img-container">
-				<img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
+				<img src="${project.imgSrc}" alt="${project.title}" ${loadingAttr} ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'">
 				</div>
                     <div class="text">
                         <p class="bold">${project.title}</p>
@@ -175,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	watchTheme();
 	document.querySelector('#theme-switch')?.addEventListener('click', toggleTheme);
 	(document.querySelector('#wrapper') as HTMLElement).style.visibility = 'visible';
-	document.querySelector('body').style.animation = 'fadeInAnimation ease 1s forwards';
+	// document.querySelector('body').style.animation = 'fadeInAnimation ease 1s forwards';
 	topBarScrollFixIOS();
 
 	const sectionTitles = document.querySelectorAll('section h2');
