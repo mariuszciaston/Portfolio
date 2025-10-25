@@ -1,5 +1,12 @@
 import { webDevProjects, mocapProjects, musicProjects, graphicProjects } from './content';
 
+declare global {
+	interface Window {
+		dataLayer: any[];
+		gtag: (...args: any[]) => void;
+	}
+}
+
 function generateProjects(
 	array: {
 		iframeSrc?: string;
@@ -215,4 +222,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	toggleGrayscale();
 	apply3DEffect();
+
+	setTimeout(() => {
+		const GA_MEASUREMENT_ID = 'G-L4NJKX8FMC';
+		const script = document.createElement('script');
+		script.async = true;
+		script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+		document.head.appendChild(script);
+
+		window.dataLayer = window.dataLayer || [];
+		function gtag(...args: any[]) {
+			window.dataLayer.push(args);
+		}
+		(window as any).gtag = gtag;
+
+		gtag('js', new Date());
+		gtag('config', GA_MEASUREMENT_ID);
+	}, 4000);
 });
