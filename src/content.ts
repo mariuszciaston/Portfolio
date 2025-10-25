@@ -1,5 +1,13 @@
 const webDevProjects = [
 	{
+		href: 'https://mini-message-board-production-cd11.up.railway.app/',
+		imgSrc: 'webdev/Mini-Messageboard.png',
+		title: 'Mini Message Board',
+		year: '2025',
+		description: 'simple message board using PostgreSQL database',
+	},
+
+	{
 		href: 'https://shopping-cart-mariuszciaston.netlify.app/',
 		imgSrc: 'webdev/Shopping-Cart.png',
 		title: 'FakeSTORE',
