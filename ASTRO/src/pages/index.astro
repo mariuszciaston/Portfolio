@@ -1,16 +1,637 @@
 ---
-
+import { webDevProjects, mocapProjects, musicProjects, graphicProjects } from '../data/content.ts';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="en" class="theme-light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mariusz Ciastoń's portfolio showcasing web development, motion capture, electronic music, and graphics projects.">
+    <title>Mariusz Ciastoń</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script src="https://kit.fontawesome.com/5f5b4189ad.js" crossorigin="anonymous" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="darkreader-lock">
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="heading">
+                <h1>MARIUSZ CIASTOŃ</h1>
+                <div id="icons" role="group" aria-label="theme controls and social links">
+                    <button type="button" id="theme-switch" aria-label="theme switch">
+                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" id="grayscale-switch" aria-label="grayscale switch">
+                        <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+                    </button>
+                    <a href="https://github.com/mariuszciaston/" target="_blank" rel="noopener" aria-label="Github profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/mariuszciaston/" target="_blank" aria-label="Linkedin profile"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="mailto:mciaston90@gmail.com" aria-label="Send email to mciaston90@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <hr class="margin">
+        </header>
+        <main>
+            <section id="first">
+                <h2>Web development</h2>
+                <div class="grid-container grid-container--fill webdev">
+                    {webDevProjects.map((project) => (
+                        <div class="item-container-wrap">
+                            <div class="item-container">
+                                <a href={project.href} target="_blank" rel="noopener" class="item">
+                                    <div class="img-container">
+                                        <img src={project.imgSrc} alt={project.title} loading="lazy">
+                                    </div>
+                                    <div class="text">
+                                        <p class="bold">{project.title}</p>
+                                        <p class="secondary">{project.year}</p>
+                                        <p>{project.description}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+            <hr>
+            <section id="second" class="hidden">
+                <h2>Motion capture</h2>
+                <div class="grid-container grid-container--fill mocap">
+                    {mocapProjects.map((project) => (
+                        <div class="item-container-wrap">
+                            <div class="item-container">
+                                {project.imgSrc ? (
+                                    <a href={project.href} target="_blank" rel="noopener" class="item">
+                                        <div class="img-container">
+                                            <img src={project.imgSrc} alt={project.title} loading="lazy">
+                                        </div>
+                                    </a>
+                                ) : (
+                                    <div class="item">
+                                        <iframe src={project.iframeSrc} frameborder="0" allowfullscreen loading="lazy"></iframe>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+            <hr>
+            <section id="third" class="hidden">
+                <h2>Electronic music</h2>
+                <div class="grid-container grid-container--fill music">
+                    {musicProjects.map((project) => (
+                        <div class="item-container-wrap">
+                            <div class="item-container">
+                                <div class="item">
+                                    <iframe src={project.iframeSrc} frameborder="0" allowfullscreen loading="lazy"></iframe>
+                                    <div class="text">
+                                        <p class="bold">{project.title}</p>
+                                        <p class="secondary">{project.year}</p>
+                                        <p>{project.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+            <hr>
+            <section id="fourth" class="hidden">
+                <h2>Commercial graphics</h2>
+                <div class="grid-container grid-container--fill graphics">
+                    {graphicProjects.map((project) => (
+                        <div class="item-container-wrap">
+                            <div class="item-container">
+                                <a href={project.href} target="_blank" rel="noopener" class="item">
+                                    <div class="img-container">
+                                        <img src={project.imgSrc} alt={project.title} loading="lazy">
+                                    </div>
+                                    <div class="text">
+                                        <p class="bold">{project.title}</p>
+                                        <p class="secondary">{project.year}</p>
+                                        <p>{project.description}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </main>
+        <footer>
+            <hr class="margin">
+            <span id="signature">
+                <span>Mariusz Ciastoń 2024</span>
+                <a href="mailto:mciaston90@gmail.com">mciaston90@gmail.com</a>
+            </span>
+        </footer>
+    </div>
+</body>
+
+<style>
+html {
+	font-family: 'Roboto', 'Arial', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 16px;
+	color: var(--text);
+	background-color: var(--background);
+	height: 100%;
+}
+
+.theme-light {
+	--text: hsl(0, 0%, 0%);
+	--text-secondary: hsl(0, 0%, 38%);
+	--background: hsl(0, 0%, 100%);
+	--opacity: hsla(0, 0%, 100%, 0.5);
+	--card-bcg: hsl(0, 0%, 100%);
+	--card-border: hsl(0, 0%, 80%);
+	--card-hover: hsl(0, 0%, 95%);
+	--card-inner-border-hover: hsl(0, 0%, 80%);
+}
+
+.theme-dark {
+	--text: hsl(0, 0%, 100%);
+	--text-secondary: hsl(0, 0%, 67%);
+	--background: hsl(0, 0%, 0%);
+	--opacity: hsla(0, 0%, 0%, 0.5);
+	--card-bcg: hsl(0, 0%, 15%);
+	--card-border: hsl(0, 0%, 15%);
+	--card-hover: hsl(0, 0%, 25%);
+	--card-inner-border-hover: hsl(0, 0%, 25%);
+}
+
+body {
+	height: 100%;
+	flex-direction: row;
+	letter-spacing: 0.05rem;
+	background-color: var(--background);
+	display: flex;
+	justify-content: center;
+}
+
+#wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 2560px;
+	display: flex;
+	visibility: visible;
+	animation: fadeInAnimation 0.5s;
+}
+
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+hr {
+	border: 0.03125rem solid var(--text);
+	margin: 0;
+}
+
+hr.margin {
+	margin: 0 1rem;
+}
+
+header {
+	width: 100%;
+	max-width: 2560px;
+	position: fixed;
+	top: 0;
+	background-color: var(--opacity);
+	z-index: 1;
+	touch-action: none;
+	overflow: auto;
+	padding: 0;
+}
+
+#heading {
+	padding: 1rem;
+	margin: 0;
+	font-size: 1.9rem;
+	letter-spacing: 0.1rem;
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem 2rem;
+	white-space: nowrap;
+	flex-wrap: wrap;
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+#heading h1 {
+	margin: 0;
+	padding: 0;
+	font-size: inherit;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+#heading h1:hover {
+	background-color: var(--text);
+	color: var(--background);
+}
+
+#icons {
+	display: flex;
+	gap: 1rem;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	justify-items: center;
+}
+
+#icons > * {
+	max-width: 2rem;
+}
+
+main {
+	flex: 1;
+	overflow: auto;
+	scrollbar-width: none;
+	display: flex;
+	flex-direction: column;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 7.369rem;
+	padding-bottom: 8.012rem;
+}
+
+.grid-container {
+	display: grid;
+	gap: 2rem;
+	padding: 2rem 0;
+}
+
+h2 {
+	padding: 0;
+	margin: 2rem 0 0 0;
+	font-size: 1.45rem;
+	font-weight: 300;
+	display: flex;
+	max-width: max-content;
+}
+
+.grid-container--fill {
+	grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.grid-container--fill.music {
+	grid-template-columns: 1fr;
+}
+
+.theme-dark .grid-container--fill img {
+	box-shadow: none;
+}
+
+section h2 {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+section h2:hover {
+	text-decoration: line-through;
+}
+
+section.hidden .grid-container {
+	padding: 1rem 0;
+	height: 0;
+	visibility: hidden;
+}
+
+section.hidden h2:hover {
+	text-decoration: none;
+}
+
+section.hidden h2:hover::before {
+	content: '+\00a0';
+}
+
+.item {
+	text-decoration: none;
+	color: var(--text);
+	padding: 1rem;
+	padding: clamp(1rem, calc((16 / 288) * 100cqw), 2rem);
+	border-radius: 1rem;
+	border-radius: clamp(1rem, calc((16 / 288) * 100cqw), 2rem);
+	background-color: var(--card-bcg);
+	border: 0.03125rem solid var(--card-border);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	gap: clamp(1rem, calc((16 / 288) * 100cqw), 2rem);
+	flex: 1;
+}
+
+.grid-container--fill.music .item {
+	padding: 1rem;
+	padding: clamp(1rem, calc((16 / 288) * 25cqw), 2rem);
+	border-radius: 1rem;
+	border-radius: clamp(1rem, calc((16 / 288) * 25cqw), 2rem);
+	gap: 1rem;
+	gap: clamp(1rem, calc((16 / 288) * 25cqw), 2rem);
+}
+
+.item:hover {
+	background-color: var(--card-hover);
+	border: 0.03125rem solid var(--card-hover);
+}
+
+.item:hover img {
+	outline: 0.015625rem solid var(--card-inner-border-hover);
+}
+
+.grid-container .item-container {
+	transition: filter 0.5s ease;
+	container-type: inline-size;
+}
+
+.grid-container.grayscale .item-container {
+	filter: grayscale(1);
+}
+
+.grid-container.grayscale .item-container:hover {
+	filter: grayscale(0);
+}
+
+.item .img-container {
+	padding: 0.125rem;
+	padding: clamp(0.125rem, calc((2 / 288) * 100cqw), 0.25rem);
+	transform-style: preserve-3d;
+	display: flex;
+}
+
+.item img {
+	max-width: 100%;
+	border-radius: 1rem;
+	box-shadow: hsla(0, 0%, 0%, 0) 0px 0px 0px 0px, hsla(0, 0%, 0%, 0) 0px 0px 0px 0px, hsla(0, 0%, 0%, 0.1) 0px 1px 3px 0px,
+		hsla(0, 0%, 0%, 0.1) 0px 1px 2px -1px;
+	box-sizing: border-box;
+	object-fit: cover;
+	aspect-ratio: 4/3;
+	flex: 1;
+	margin-bottom: -0.0625rem;
+}
+
+.item iframe {
+	width: 100%;
+	height: 166px;
+	border-radius: 1rem;
+}
+
+.item p {
+	line-height: 1.5em;
+	margin: 0;
+}
+
+.item-container-wrap {
+	container-type: inline-size;
+}
+
+.item-container {
+	display: flex;
+	height: 100%;
+	border-radius: 1rem;
+	border-radius: clamp(1rem, calc((16 / 288) * 100cqw), 2rem);
+}
+
+.item {
+	transform-style: preserve-3d;
+	transition: transform 0.1s ease;
+	--perspective: 1000px;
+	--perspective: clamp(1000px, calc((1000 / 288) * 100cqw), 2083.33px);
+	transform: perspective(var(--perspective)) rotateX(0) rotateY(0);
+	will-change: transform;
+}
+
+.item.leaving {
+	transition: transform 0.4s ease;
+}
+
+.item img {
+	transform: translateZ(1.25rem);
+	transform: translateZ(clamp(1.25rem, calc((20 / 288) * 100cqw), 2.5rem));
+}
+
+.text {
+	flex: 1;
+}
+
+p.bold {
+	font-weight: 500;
+	font-size: 1rem;
+}
+
+p.secondary {
+	font-weight: 400;
+	font-size: 0.875rem;
+	color: var(--text-secondary);
+	margin: 0.25rem 0;
+	margin: clamp(0.25rem, calc((4 / 288) * 100cqw), 0.5rem) 0;
+}
+
+footer {
+	font-size: 0.875rem;
+	width: 100%;
+	max-width: 2560px;
+	position: fixed;
+	bottom: 0;
+	background-color: var(--opacity);
+	touch-action: none;
+}
+
+#signature {
+	display: flex;
+	gap: 1rem 2rem;
+	justify-content: space-between;
+	white-space: nowrap;
+	flex-wrap: wrap;
+	padding: 1.5rem 1rem;
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+a {
+	color: var(--text);
+	text-decoration: none;
+}
+
+a:not(.item):hover {
+	text-decoration: underline;
+}
+
+#grayscale-switch,
+#theme-switch {
+	background: none;
+	border: none;
+	color: inherit;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.fa-circle-half-stroke {
+	transform: scale(1) rotateY(0deg);
+}
+
+.fa-circle-half-stroke:hover {
+	transform: scale(1.2) rotateY(0deg);
+}
+
+.fa-circle-half-stroke.flip {
+	transform: scale(1) rotateY(180deg);
+}
+
+.fa-circle-half-stroke.flip:hover {
+	transform: scale(1.2) rotateY(180deg);
+}
+
+.fa-circle-half-stroke,
+.fa-sun,
+.fa-moon,
+.fa-github,
+.fa-linkedin,
+.fa-envelope {
+	color: var(--text);
+	cursor: pointer;
+}
+
+.fa-sun:hover,
+.fa-moon:hover,
+.fa-github:hover,
+.fa-linkedin:hover,
+.fa-envelope:hover {
+	transform: scale(1.2);
+}
+
+@media (not (any-pointer: fine)) {
+	#grayscale-switch {
+		display: none;
+	}
+
+	#icons {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media only screen and (min-width: 576px) {
+	#heading,
+	main,
+	#signature {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+
+	hr.margin {
+		margin: 0 2rem;
+	}
+}
+
+@media only screen and (min-width: 614px) {
+	main {
+		padding-top: 4.185rem;
+		padding-bottom: 6.006rem;
+	}
+}
+
+@media only screen and (min-width: 1152px) {
+	.grid-container--fill {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.grid-container--fill.music .item {
+		padding: 1rem;
+		padding: clamp(1rem, calc((16 / 288) * 50cqw), 2rem);
+		border-radius: 1rem;
+		border-radius: clamp(1rem, calc((16 / 288) * 50cqw), 2rem);
+		gap: 1rem;
+		gap: clamp(1rem, calc((16 / 288) * 50cqw), 2rem);
+	}
+
+	.grid-container--fill.music {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+	const themeSwitch = document.getElementById('theme-switch');
+	const grayscaleSwitch = document.getElementById('grayscale-switch');
+	const html = document.documentElement;
+	const sections = document.querySelectorAll('section');
+	const gridContainers = document.querySelectorAll('.grid-container');
+
+	// Theme switching
+	themeSwitch?.addEventListener('click', () => {
+		const isLight = html.classList.contains('theme-light');
+		html.classList.toggle('theme-light', !isLight);
+		html.classList.toggle('theme-dark', isLight);
+		
+		const icon = themeSwitch.querySelector('i');
+		icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+	});
+
+	// Grayscale toggle
+	grayscaleSwitch?.addEventListener('click', () => {
+		gridContainers.forEach(container => {
+			container.classList.toggle('grayscale');
+		});
+		
+		const icon = grayscaleSwitch.querySelector('i');
+		icon.classList.toggle('flip');
+	});
+
+	// Section toggle
+	sections.forEach(section => {
+		const h2 = section.querySelector('h2');
+		h2?.addEventListener('click', () => {
+			section.classList.toggle('hidden');
+		});
+	});
+
+	// 3D card effects
+	const items = document.querySelectorAll('.item');
+	
+	items.forEach(item => {
+		item.addEventListener('mousemove', (e) => {
+			const rect = item.getBoundingClientRect();
+			const x = e.clientX - rect.left;
+			const y = e.clientY - rect.top;
+			
+			const centerX = rect.width / 2;
+			const centerY = rect.height / 2;
+			
+			const rotateX = (y - centerY) / 10;
+			const rotateY = (centerX - x) / 10;
+			
+			item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+		});
+		
+		item.addEventListener('mouseleave', () => {
+			item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+		});
+	});
+
+	// Title click to reload
+	const title = document.querySelector('#heading h1');
+	title?.addEventListener('click', () => {
+		window.location.reload();
+	});
+});
+</script>
 </html>
