@@ -248,6 +248,7 @@ section.hidden h2:hover::before {
 	padding: clamp(0.125rem, calc((2 / 288) * 100cqw), 0.25rem);
 	transform-style: preserve-3d;
 	display: flex;
+	aspect-ratio: 4/3;
 }
 
 .item img {
