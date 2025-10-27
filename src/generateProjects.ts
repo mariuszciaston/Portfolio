@@ -37,7 +37,7 @@ function generateProjects(
 				return `
                 <div class="item-container">
                     <div class="item">
-                        <iframe width="100%" scrolling="no" frameborder="no" allow="autoplay" style="border-radius: 1rem;" src="${project.iframeSrc}"></iframe>
+                        <iframe width="100%" scrolling="no" frameborder="no" allow="autoplay" style="border-radius: 1rem;" title="SoundCloud music player" src="${project.iframeSrc}"></iframe>
                         <div class="text">
                             <p class="bold">${project.title}</p>
                             <p class="secondary"> ${project.description} | ${project.year}</p>
