@@ -110,8 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	initTheme();
 	watchTheme();
 	document.querySelector('#theme-switch')?.addEventListener('click', toggleTheme);
-	// (document.querySelector('#wrapper') as HTMLElement).style.visibility = 'visible';
-	// document.querySelector('body').style.animation = 'fadeInAnimation ease 1s forwards';
 	toggleGrayscale();
 	topBarScrollFixIOS();
 	document.querySelector('#heading h1')?.addEventListener('click', () => window.location.reload());

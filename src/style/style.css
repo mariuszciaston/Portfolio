@@ -58,16 +58,6 @@ body {
 	width: 100%;
 	max-width: 2560px;
 	display: flex;
-	/* visibility: hidden; */
-}
-
-@keyframes fadeInAnimation {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
 }
 
 hr {
@@ -180,8 +170,6 @@ section h2:hover {
 
 section.hidden .grid-container {
 	padding: 1rem 0;
-	height: 0;
-	visibility: hidden;
 }
 
 section.hidden h2:hover {
@@ -192,9 +180,9 @@ section.hidden h2:hover::before {
 	content: '+\00a0';
 }
 
-/* section.hidden > .grid-container--fill > * {
+section.hidden > .grid-container--fill > * {
 	display: none;
-} */
+}
 
 .item {
 	text-decoration: none;
