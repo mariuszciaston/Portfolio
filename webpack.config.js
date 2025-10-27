@@ -6,6 +6,9 @@ import CopyPlugin from 'copy-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
+import { webdevProjects } from './src/content.ts';
+import { generateProjects } from './src/generateProjects.ts';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -27,6 +30,21 @@ export default {
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
 			favicon: './src/favicon/favicon.ico',
+			templateParameters: {
+				webdevHtml: generateProjects(webdevProjects, 'webdev'),
+			},
+			minify: {
+				removeComments: true,
+				collapseWhitespace: true,
+				removeRedundantAttributes: true,
+				useShortDoctype: true,
+				removeEmptyAttributes: true,
+				removeStyleLinkTypeAttributes: true,
+				keepClosingSlash: true,
+				minifyJS: true,
+				minifyCSS: true,
+				minifyURLs: true,
+			},
 		}),
 		new CopyPlugin({
 			patterns: [

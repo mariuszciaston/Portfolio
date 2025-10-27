@@ -1,80 +1,11 @@
-import { webDevProjects, mocapProjects, musicProjects, graphicProjects } from './content';
+import { mocapProjects, musicProjects, graphicProjects } from './content';
+import { generateProjects } from './generateProjects';
 
 declare global {
 	interface Window {
 		dataLayer: any[];
 		gtag: (...args: any[]) => void;
 	}
-}
-
-function generateProjects(
-	array: {
-		iframeSrc?: string;
-		href?: string;
-		imgSrc?: string;
-		title?: string;
-		year?: string;
-		description?: string;
-	}[],
-	type: 'webdev' | 'mocap' | 'music' | 'graphics'
-) {
-	return array
-		.map((project, index) => {
-			if (type === 'mocap') {
-				return project.iframeSrc
-					? `
-                    <div class="item-container">
-                        <div class="item">
-                            <iframe style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem;  box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" |referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}"></iframe>
-                        </div>
-                    </div>
-                    `
-					: `
-					<div class="item-container-wrap">
-                    <div class="item-container">
-                        <a href="${project.href}" target="_blank" class="item">
-                            <div class="img-container">
-							<img src="${project.imgSrc}" alt="${project.title}" loading="lazy" onerror="this.onerror=null; this.src='img/placeholder.png'">
-							</div>
-                        </a>
-                    </div>
-					</div>
-                    `;
-			}
-
-			if (type === 'music') {
-				return `
-                <div class="item-container">
-                    <div class="item">
-                        <iframe width="100%" scrolling="no" frameborder="no" allow="autoplay" style="border-radius: 1rem;" src="${project.iframeSrc}"></iframe>
-                        <div class="text">
-                            <p class="bold">${project.title}</p>
-                            <p class="secondary"> ${project.description} | ${project.year}</p>
-                        </div>
-                    </div>
-                </div>
-                `;
-			}
-			const isFirstWebdevImage = type === 'webdev' && index === 0;
-			const loadingAttr = isFirstWebdevImage ? '' : 'loading="lazy"';
-			const fetchPriorityAttr = isFirstWebdevImage ? 'fetchpriority="high"' : '';
-
-			return `
-			<div class="item-container-wrap">
-            <div class="item-container">
-                <a href="${project.href}" target="_blank" class="item">
-				<div class="img-container">
-				<img src="${project.imgSrc}" alt="${project.title}" ${loadingAttr} ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'">
-				</div>
-                    <div class="text">
-                        <p class="bold">${project.title}</p>
-                        <p class="secondary"> ${project.description} | ${project.year}</p>
-                    </div>
-                </a>
-            </div>
-			</div>`;
-		})
-		.join('');
 }
 
 function initTheme() {
@@ -177,28 +108,23 @@ function apply3DEffect() {
 
 document.addEventListener('DOMContentLoaded', () => {
 	initTheme();
-
-	const webDevContainer = document.querySelector('.grid-container.webdev');
-	if (webDevContainer) {
-		webDevContainer.innerHTML = generateProjects(webDevProjects, 'webdev');
-	}
-
 	watchTheme();
 	document.querySelector('#theme-switch')?.addEventListener('click', toggleTheme);
-	(document.querySelector('#wrapper') as HTMLElement).style.visibility = 'visible';
+	// (document.querySelector('#wrapper') as HTMLElement).style.visibility = 'visible';
 	// document.querySelector('body').style.animation = 'fadeInAnimation ease 1s forwards';
+	toggleGrayscale();
 	topBarScrollFixIOS();
-
-	const sectionTitles = document.querySelectorAll('section h2');
+	document.querySelector('#heading h1')?.addEventListener('click', () => window.location.reload());
+	apply3DEffect();
 
 	let mocapGenerated = false;
 	let musicGenerated = false;
 	let graphicsGenerated = false;
 
+	const sectionTitles = document.querySelectorAll('section h2');
 	sectionTitles.forEach((sectionTitle) => {
 		sectionTitle.addEventListener('click', () => {
 			sectionTitle.parentElement.classList.toggle('hidden');
-
 			if (sectionTitle.parentElement.id === 'second' && !mocapGenerated) {
 				document.querySelector('.grid-container.mocap').innerHTML = generateProjects(mocapProjects, 'mocap');
 				mocapGenerated = true;
@@ -215,13 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 	});
-
-	document.querySelector('#heading h1')?.addEventListener('click', () => {
-		window.location.reload();
-	});
-
-	toggleGrayscale();
-	apply3DEffect();
 
 	setTimeout(() => {
 		const GA_MEASUREMENT_ID = 'G-L4NJKX8FMC';
@@ -240,3 +159,5 @@ document.addEventListener('DOMContentLoaded', () => {
 		gtag('config', GA_MEASUREMENT_ID);
 	}, 4000);
 });
+
+export { generateProjects };

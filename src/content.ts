@@ -1,4 +1,4 @@
-const webDevProjects = [
+const webdevProjects = [
 	{
 		href: 'https://mini-message-board-production-cd11.up.railway.app/',
 		imgSrc: 'webdev/Mini-Messageboard.png',
@@ -250,4 +250,4 @@ const graphicProjects = [
 	},
 ];
 
-export { webDevProjects, mocapProjects, musicProjects, graphicProjects };
+export { webdevProjects, mocapProjects, musicProjects, graphicProjects };

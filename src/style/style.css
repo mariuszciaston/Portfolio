@@ -58,7 +58,7 @@ body {
 	width: 100%;
 	max-width: 2560px;
 	display: flex;
-	visibility: hidden;
+	/* visibility: hidden; */
 }
 
 @keyframes fadeInAnimation {
