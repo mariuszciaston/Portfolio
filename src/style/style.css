@@ -109,15 +109,20 @@ header {
 }
 
 #icons {
-	display: flex;
-	gap: 1rem;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
-	justify-items: center;
+	gap: 1rem;
+	align-items: center;
+	/* background-color: blue; */
 }
 
 #icons > * {
-	max-width: 2rem;
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* background-color: red !important; */
 }
 
 main {
@@ -128,7 +133,7 @@ main {
 	flex-direction: column;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	padding-top: 7.369rem;
+	padding-top: 7.184rem;
 	padding-bottom: 8.012rem;
 }
 
@@ -328,13 +333,13 @@ a {
 	text-decoration: none;
 }
 
-a:not(.item):hover {
+#signature a:hover {
 	text-decoration: underline;
 }
 
 #grayscale-switch,
 #theme-switch {
-	background: none;
+	background: unset;
 	border: none;
 	color: inherit;
 	padding: 0;
