@@ -163,5 +163,3 @@ document.addEventListener('DOMContentLoaded', () => {
 		gtag('config', GA_MEASUREMENT_ID);
 	}, 4000);
 });
-
-export { generateProjects };
