@@ -29,10 +29,12 @@ export default {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
-			favicon: './src/favicon/favicon.ico',
 			templateParameters: {
 				webdevHtml: generateProjects(webdevProjects, 'webdev'),
 			},
+			// inject: 'body',
+			// chunksSortMode: 'manual',
+			// chunks: ['main'],
 			minify: {
 				removeComments: true,
 				collapseWhitespace: true,
@@ -49,6 +51,7 @@ export default {
 		new CopyPlugin({
 			patterns: [
 				{ from: './src/favicon', to: '' },
+				{ from: './src/fonts', to: './fonts' },
 				{ from: './src/img', to: './img' },
 				{ from: './src/webdev', to: './webdev' },
 				{ from: './src/mocap', to: './mocap' },
@@ -70,6 +73,13 @@ export default {
 				test: /\.tsx?$/,
 				use: 'ts-loader',
 				exclude: /node_modules/,
+			},
+			{
+				test: /\.(woff2?|ttf|otf|eot)$/,
+				type: 'asset/resource',
+				generator: {
+					filename: 'fonts/[name][ext][query]',
+				},
 			},
 		],
 	},
