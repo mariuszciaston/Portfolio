@@ -112,17 +112,27 @@ header {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	gap: 1rem;
-	align-items: center;
+	/* align-items: center; */
 	/* background-color: blue; */
 }
 
-#icons > * {
+#icons button,
+#icons a {
 	width: 2rem;
 	height: 2rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	/* background-color: red !important; */
+}
+
+#icons svg {
+	width: 2.4rem;
+	height: 2.4rem;
+}
+
+svg.hide {
+	display: none;
 }
 
 main {
@@ -372,6 +382,7 @@ a {
 .fa-envelope {
 	color: var(--text);
 	cursor: pointer;
+	aspect-ratio: 1/1;
 }
 
 .fa-sun:hover,
@@ -384,7 +395,7 @@ a {
 
 @media (not (any-pointer: fine)) {
 	#grayscale-switch {
-		display: none;
+		display: none !important;
 	}
 
 	#icons {
