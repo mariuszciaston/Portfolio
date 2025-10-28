@@ -1,16 +1,29 @@
 import { fileURLToPath } from 'url';
 import path from 'path';
+import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
 import { webdevProjects } from './src/content.ts';
 import { generateProjects } from './src/generateProjects.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const webpSettings = { quality: 75, method: 6 };
+const mocapWebpSettings = { quality: 50, method: 6 };
+const sizes = [
+	{ width: 384, height: 288 },
+	{ width: 480, height: 360 },
+	{ width: 512, height: 384 },
+	{ width: 768, height: 576 },
+	{ width: 1024, height: 768 },
+	{ width: 1280, height: 960 },
+];
 
 export default {
 	mode: 'production',
@@ -27,6 +40,9 @@ export default {
 	},
 	// devtool: 'inline-source-map',
 	plugins: [
+		new webpack.ProgressPlugin((percentage, message, ...args) => {
+			console.info(percentage, message, ...args);
+		}),
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
 			templateParameters: {
@@ -89,6 +105,48 @@ export default {
 	},
 
 	optimization: {
-		minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+		minimizer: [
+			new TerserPlugin(),
+			new CssMinimizerPlugin(),
+			new ImageMinimizerPlugin({
+				test: /webdev\/.+\.(jpe?g|png)$/i,
+				deleteOriginalAssets: false,
+				generator: sizes.map(size => ({
+					type: 'asset',
+					preset: `webp-${size.width}-lossless`,
+					implementation: ImageMinimizerPlugin.imageminGenerate,
+					options: {
+						plugins: [['imagemin-webp', { ...webpSettings, resize: size }]],
+					},
+					filename: `webdev/[name]-${size.width}[ext]`,
+				})),
+			}),
+			new ImageMinimizerPlugin({
+				test: /graphics\/.+\.(jpe?g|png)$/i,
+				deleteOriginalAssets: false,
+				generator: sizes.map(size => ({
+					type: 'asset',
+					preset: `graphics-${size.width}-lossless`,
+					implementation: ImageMinimizerPlugin.imageminGenerate,
+					options: {
+						plugins: [['imagemin-webp', { ...webpSettings, resize: size }]],
+					},
+					filename: `graphics/[name]-${size.width}[ext]`,
+				})),
+			}),
+			new ImageMinimizerPlugin({
+				test: /mocap\/.+\.(jpe?g|png)$/i,
+				deleteOriginalAssets: false,
+				generator: sizes.map(size => ({
+					type: 'asset',
+					preset: `mocap-${size.width}-lossless`,
+					implementation: ImageMinimizerPlugin.imageminGenerate,
+					options: {
+						plugins: [['imagemin-webp', { ...mocapWebpSettings, resize: size }]],
+					},
+					filename: `mocap/[name]-${size.width}[ext]`,
+				})),
+			}),
+		],
 	},
 };
