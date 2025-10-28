@@ -29,7 +29,7 @@ function generateProjects(
                     <div class="item-container">
                         <a href="${project.href}" target="_blank" class="item">
                             <div class="img-container">
-							<img src="${project.imgSrc}" alt="${project.title}" ${loadingAttr} ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'">
+							<img src="${project.imgSrc}" alt="${project.title}" ${loadingAttr} ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'">
 							</div>
                         </a>
                     </div>
@@ -56,7 +56,7 @@ function generateProjects(
             <div class="item-container">
                 <a href="${project.href}" target="_blank" class="item">
 				<div class="img-container">
-				<img style="aspect-ratio: 4 / 3; width: 100%;" src="${project.imgSrc}" alt="${project.title}" ${loadingAttr} ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'">
+				<img style="aspect-ratio: 4 / 3; width: 100%;" src="${project.imgSrc}" alt="${project.title}" ${loadingAttr} ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'">
 				</div>
                     <div class="text">
                         <p class="bold">${project.title}</p>
