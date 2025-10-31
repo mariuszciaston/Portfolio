@@ -9,21 +9,13 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
 import { webdevProjects } from './src/content.ts';
+import { widths } from './src/generateProjects.ts';
 import { generateProjects } from './src/generateProjects.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const webpSettings = { quality: 75, method: 6 };
-const mocapWebpSettings = { quality: 50, method: 6 };
-const sizes = [
-	{ width: 384, height: 288 },
-	{ width: 480, height: 360 },
-	{ width: 512, height: 384 },
-	{ width: 768, height: 576 },
-	{ width: 1024, height: 768 },
-	{ width: 1280, height: 960 },
-];
+const resolutions = widths.map((w) => ({ width: w, height: Math.round((w / 4) * 3) }));
 
 export default {
 	mode: 'production',
@@ -47,6 +39,7 @@ export default {
 			template: './src/index.html',
 			templateParameters: {
 				webdevHtml: generateProjects(webdevProjects, 'webdev'),
+				// webdevHtml: generateProjects(webdevProjects.slice(0, 1), 'webdev'),
 			},
 			// inject: 'body',
 			// chunksSortMode: 'manual',
@@ -108,43 +101,120 @@ export default {
 		minimizer: [
 			new TerserPlugin(),
 			new CssMinimizerPlugin(),
+
 			new ImageMinimizerPlugin({
 				test: /webdev\/.+\.(jpe?g|png)$/i,
 				deleteOriginalAssets: false,
-				generator: sizes.map(size => ({
+				generator: resolutions.map((res) => ({
 					type: 'asset',
-					preset: `webp-${size.width}-lossless`,
-					implementation: ImageMinimizerPlugin.imageminGenerate,
+					preset: `webdev-webp`,
+					implementation: ImageMinimizerPlugin.sharpGenerate,
 					options: {
-						plugins: [['imagemin-webp', { ...webpSettings, resize: size }]],
+						resize: { width: res.width, height: res.height },
+						encodeOptions: {
+							webp: { quality: 80, method: 6 },
+						},
 					},
-					filename: `webdev/[name]-${size.width}[ext]`,
+					filename: `webdev/[name]-${res.width}[ext]`,
 				})),
 			}),
+
 			new ImageMinimizerPlugin({
-				test: /graphics\/.+\.(jpe?g|png)$/i,
+				test: /webdev\/.+\.(jpe?g|png)$/i,
 				deleteOriginalAssets: false,
-				generator: sizes.map(size => ({
+				generator: resolutions.map((res) => ({
 					type: 'asset',
-					preset: `graphics-${size.width}-lossless`,
-					implementation: ImageMinimizerPlugin.imageminGenerate,
+					preset: `webdev-png`,
+					implementation: ImageMinimizerPlugin.sharpGenerate,
 					options: {
-						plugins: [['imagemin-webp', { ...webpSettings, resize: size }]],
+						resize: { width: res.width, height: res.height },
+						encodeOptions: {
+							png: {
+								quality: 90,
+								compressionLevel: 9,
+								progressive: true,
+							},
+						},
 					},
-					filename: `graphics/[name]-${size.width}[ext]`,
+					filename: `webdev/[name]-${res.width}[ext]`,
 				})),
 			}),
+
 			new ImageMinimizerPlugin({
 				test: /mocap\/.+\.(jpe?g|png)$/i,
 				deleteOriginalAssets: false,
-				generator: sizes.map(size => ({
+				generator: resolutions.map((res) => ({
 					type: 'asset',
-					preset: `mocap-${size.width}-lossless`,
-					implementation: ImageMinimizerPlugin.imageminGenerate,
+					preset: `mocap-webp`,
+					implementation: ImageMinimizerPlugin.sharpGenerate,
 					options: {
-						plugins: [['imagemin-webp', { ...mocapWebpSettings, resize: size }]],
+						resize: { width: res.width, height: res.height },
+						encodeOptions: {
+							webp: { quality: 40, method: 6 },
+						},
 					},
-					filename: `mocap/[name]-${size.width}[ext]`,
+					filename: `mocap/[name]-${res.width}[ext]`,
+				})),
+			}),
+
+			new ImageMinimizerPlugin({
+				test: /mocap\/.+\.(jpe?g|png)$/i,
+				deleteOriginalAssets: false,
+				generator: resolutions.map((res) => ({
+					type: 'asset',
+					preset: `mocap-jpg`,
+					implementation: ImageMinimizerPlugin.sharpGenerate,
+					options: {
+						resize: { width: res.width, height: res.height },
+						encodeOptions: {
+							jpg: {
+								quality: 80,
+								mozjpeg: true,
+								progressive: true,
+								optimiseScans: true,
+								trellisQuantisation: true,
+							},
+						},
+					},
+					filename: `mocap/[name]-${res.width}[ext]`,
+				})),
+			}),
+
+			new ImageMinimizerPlugin({
+				test: /graphics\/.+\.(jpe?g|png)$/i,
+				deleteOriginalAssets: false,
+				generator: resolutions.map((res) => ({
+					type: 'asset',
+					preset: `graphics-webp`,
+					implementation: ImageMinimizerPlugin.sharpGenerate,
+					options: {
+						resize: { width: res.width, height: res.height },
+						encodeOptions: {
+							webp: { quality: 80, method: 6 },
+						},
+					},
+					filename: `graphics/[name]-${res.width}[ext]`,
+				})),
+			}),
+
+			new ImageMinimizerPlugin({
+				test: /graphics\/.+\.(jpe?g|png)$/i,
+				deleteOriginalAssets: false,
+				generator: resolutions.map((res) => ({
+					type: 'asset',
+					preset: `graphics-png`,
+					implementation: ImageMinimizerPlugin.sharpGenerate,
+					options: {
+						resize: { width: res.width, height: res.height },
+						encodeOptions: {
+							png: {
+								quality: 90,
+								compressionLevel: 9,
+								progressive: true,
+							},
+						},
+					},
+					filename: `graphics/[name]-${res.width}[ext]`,
 				})),
 			}),
 		],

@@ -196,7 +196,7 @@ h2 {
 }
 
 .grid-container--fill {
-	grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
 }
 
 .grid-container--fill.music {
@@ -287,6 +287,12 @@ section.hidden > .grid-container--fill > * {
 	aspect-ratio: 4/3;
 }
 
+.item picture {
+	display: flex;
+	aspect-ratio: 4/3;
+	width: 100%;
+}
+
 .item img {
 	max-width: 100%;
 	border-radius: 1rem;
@@ -295,6 +301,7 @@ section.hidden > .grid-container--fill > * {
 	box-sizing: border-box;
 	object-fit: cover;
 	aspect-ratio: 4/3;
+	display: flex;
 	flex: 1;
 	margin-bottom: -0.0625rem;
 }
@@ -328,7 +335,8 @@ section.hidden > .grid-container--fill > * {
 	transition: transform 0.4s ease;
 }
 
-.item img {
+.item img,
+.item picture {
 	transform: translateZ(1.25rem);
 	transform: translateZ(clamp(1.25rem, calc((20 / 288) * 100cqw), 2.5rem));
 }
