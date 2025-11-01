@@ -16,6 +16,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const resolutions = widths.map((w) => ({ width: w, height: Math.round((w / 4) * 3) }));
+const resolutionsPlusLarge = [...widths, 2560].map((w) => ({ width: w, height: Math.round((w / 4) * 3) }));
 
 export default {
 	mode: 'production',
@@ -105,117 +106,155 @@ export default {
 			new ImageMinimizerPlugin({
 				test: /webdev\/.+\.(jpe?g|png)$/i,
 				deleteOriginalAssets: false,
-				generator: resolutions.map((res) => ({
-					type: 'asset',
-					preset: `webdev-webp`,
-					implementation: ImageMinimizerPlugin.sharpGenerate,
-					options: {
-						resize: { width: res.width, height: res.height },
-						encodeOptions: {
-							webp: { quality: 80, method: 6 },
-						},
-					},
-					filename: `webdev/[name]-${res.width}[ext]`,
-				})),
-			}),
-
-			new ImageMinimizerPlugin({
-				test: /webdev\/.+\.(jpe?g|png)$/i,
-				deleteOriginalAssets: false,
-				generator: resolutions.map((res) => ({
-					type: 'asset',
-					preset: `webdev-png`,
-					implementation: ImageMinimizerPlugin.sharpGenerate,
-					options: {
-						resize: { width: res.width, height: res.height },
-						encodeOptions: {
-							png: {
-								quality: 90,
-								compressionLevel: 9,
-								progressive: true,
+				generator: resolutions.flatMap((res) => [
+					// WEBP
+					{
+						type: 'asset',
+						preset: 'webdev-webp',
+						implementation: ImageMinimizerPlugin.sharpGenerate,
+						options: {
+							resize: { width: res.width, height: res.height },
+							encodeOptions: {
+								webp: { quality: 80, method: 6 },
 							},
 						},
+						filename: `webdev/[name]-${res.width}[ext]`,
 					},
-					filename: `webdev/[name]-${res.width}[ext]`,
-				})),
+
+					// PNG
+					{
+						type: 'asset',
+						preset: 'webdev-png',
+						implementation: ImageMinimizerPlugin.sharpGenerate,
+						options: {
+							resize: { width: res.width, height: res.height },
+							encodeOptions: {
+								png: {
+									quality: 90,
+									compressionLevel: 9,
+									progressive: true,
+								},
+							},
+						},
+						filename: `webdev/[name]-${res.width}[ext]`,
+					},
+				]),
 			}),
 
 			new ImageMinimizerPlugin({
 				test: /mocap\/.+\.(jpe?g|png)$/i,
 				deleteOriginalAssets: false,
-				generator: resolutions.map((res) => ({
-					type: 'asset',
-					preset: `mocap-webp`,
-					implementation: ImageMinimizerPlugin.sharpGenerate,
-					options: {
-						resize: { width: res.width, height: res.height },
-						encodeOptions: {
-							webp: { quality: 40, method: 6 },
-						},
-					},
-					filename: `mocap/[name]-${res.width}[ext]`,
-				})),
-			}),
-
-			new ImageMinimizerPlugin({
-				test: /mocap\/.+\.(jpe?g|png)$/i,
-				deleteOriginalAssets: false,
-				generator: resolutions.map((res) => ({
-					type: 'asset',
-					preset: `mocap-jpg`,
-					implementation: ImageMinimizerPlugin.sharpGenerate,
-					options: {
-						resize: { width: res.width, height: res.height },
-						encodeOptions: {
-							jpg: {
-								quality: 80,
-								mozjpeg: true,
-								progressive: true,
-								optimiseScans: true,
-								trellisQuantisation: true,
+				generator: [
+					// WEBP
+					...resolutionsPlusLarge.map((res) => ({
+						type: 'asset',
+						preset: `mocap-webp`,
+						implementation: ImageMinimizerPlugin.sharpGenerate,
+						options: {
+							resize: { width: res.width, height: res.height },
+							encodeOptions: {
+								webp: { quality: 80, method: 6 },
 							},
 						},
+						filename: `mocap/[name]-${res.width}[ext]`,
+					})),
+
+					// JPG
+					...resolutionsPlusLarge.map((res) => ({
+						type: 'asset',
+						preset: `mocap-jpg`,
+						implementation: ImageMinimizerPlugin.sharpGenerate,
+						options: {
+							resize: { width: res.width, height: res.height },
+							encodeOptions: {
+								jpg: {
+									quality: 80,
+									mozjpeg: true,
+									progressive: true,
+									optimiseScans: true,
+									trellisQuantisation: true,
+								},
+							},
+						},
+						filename: `mocap/[name]-${res.width}[ext]`,
+					})),
+
+					// JPG fallback
+					{
+						type: 'asset',
+						preset: `mocap-jpg-fallback`,
+						implementation: ImageMinimizerPlugin.sharpGenerate,
+						options: {
+							resize: { width: 1280, height: 960 },
+							encodeOptions: {
+								jpg: {
+									quality: 80,
+									mozjpeg: true,
+									progressive: true,
+									optimiseScans: true,
+									trellisQuantisation: true,
+								},
+							},
+						},
+						filename: `mocap/[name][ext]`,
 					},
-					filename: `mocap/[name]-${res.width}[ext]`,
-				})),
+				],
 			}),
 
 			new ImageMinimizerPlugin({
 				test: /graphics\/.+\.(jpe?g|png)$/i,
 				deleteOriginalAssets: false,
-				generator: resolutions.map((res) => ({
-					type: 'asset',
-					preset: `graphics-webp`,
-					implementation: ImageMinimizerPlugin.sharpGenerate,
-					options: {
-						resize: { width: res.width, height: res.height },
-						encodeOptions: {
-							webp: { quality: 80, method: 6 },
-						},
-					},
-					filename: `graphics/[name]-${res.width}[ext]`,
-				})),
-			}),
-
-			new ImageMinimizerPlugin({
-				test: /graphics\/.+\.(jpe?g|png)$/i,
-				deleteOriginalAssets: false,
-				generator: resolutions.map((res) => ({
-					type: 'asset',
-					preset: `graphics-png`,
-					implementation: ImageMinimizerPlugin.sharpGenerate,
-					options: {
-						resize: { width: res.width, height: res.height },
-						encodeOptions: {
-							png: {
-								quality: 90,
-								compressionLevel: 9,
-								progressive: true,
+				generator: [
+					// WEBP
+					...resolutionsPlusLarge.map((res) => ({
+						type: 'asset',
+						preset: `graphics-webp`,
+						implementation: ImageMinimizerPlugin.sharpGenerate,
+						options: {
+							resize: { width: res.width, height: res.height },
+							encodeOptions: {
+								webp: { quality: 80, method: 6 },
 							},
 						},
+						filename: `graphics/[name]-${res.width}[ext]`,
+					})),
+
+					// PNG
+					...resolutionsPlusLarge.map((res) => ({
+						type: 'asset',
+						preset: `graphics-png`,
+						implementation: ImageMinimizerPlugin.sharpGenerate,
+						options: {
+							resize: { width: res.width, height: res.height },
+							encodeOptions: {
+								png: {
+									quality: 90,
+									compressionLevel: 9,
+									progressive: true,
+								},
+							},
+						},
+						filename: `graphics/[name]-${res.width}[ext]`,
+					})),
+
+					// PNG fallback
+					{
+						type: 'asset',
+						preset: `graphics-png-fallback`,
+						implementation: ImageMinimizerPlugin.sharpGenerate,
+						options: {
+							resize: { width: 1280, height: 960 },
+							encodeOptions: {
+								png: {
+									quality: 90,
+									compressionLevel: 9,
+									progressive: true,
+								},
+							},
+						},
+						filename: `graphics/[name][ext]`,
 					},
-					filename: `graphics/[name]-${res.width}[ext]`,
-				})),
+				],
 			}),
 		],
 	},

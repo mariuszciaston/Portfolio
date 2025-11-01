@@ -137,27 +137,32 @@ const webdevProjects = [
 
 const mocapProjects = [
 	{
-		href: 'mocap/mocap-1-large.jpg',
+		hrefWebp: 'mocap/mocap-1-2560.webp',
+		href: 'mocap/mocap-1-2560.jpg',
 		imgSrc: 'mocap/mocap-1.jpg',
 		title: 'mocap image 1',
 	},
 	{
-		href: 'mocap/mocap-2-large.jpg',
+		hrefWebp: 'mocap/mocap-2-2560.webp',
+		href: 'mocap/mocap-2-2560.jpg',
 		imgSrc: 'mocap/mocap-2.jpg',
 		title: 'mocap image 2',
 	},
 	{
-		href: 'mocap/mocap-3-large.jpg',
+		hrefWebp: 'mocap/mocap-3-2560.webp',
+		href: 'mocap/mocap-3-2560.jpg',
 		imgSrc: 'mocap/mocap-3.jpg',
 		title: 'mocap image 3',
 	},
 	{
-		href: 'mocap/mocap-4-large.jpg',
+		hrefWebp: 'mocap/mocap-4-2560.webp',
+		href: 'mocap/mocap-4-2560.jpg',
 		imgSrc: 'mocap/mocap-4.jpg',
 		title: 'mocap image 4',
 	},
 	{
-		href: 'mocap/mocap-5-large.jpg',
+		hrefWebp: 'mocap/mocap-5-2560.webp',
+		href: 'mocap/mocap-5-2560.jpg',
 		imgSrc: 'mocap/mocap-5.jpg',
 		title: 'mocap image 5',
 	},
@@ -218,7 +223,8 @@ const musicProjects = [
 
 const graphicProjects = [
 	{
-		href: 'graphics/Candis-Konopie-2022-Zielona-Ulotka-DL-large.png',
+		hrefWebp: 'graphics/Candis-Konopie-2022-Zielona-Ulotka-DL-2560.webp',
+		href: 'graphics/Candis-Konopie-2022-Zielona-Ulotka-DL-2560.png',
 		imgSrc: 'graphics/Candis-Konopie-2022-Zielona-Ulotka-DL.png',
 		title: 'Candis',
 		year: '2022',
@@ -226,7 +232,8 @@ const graphicProjects = [
 	},
 
 	{
-		href: 'graphics/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL-large.png',
+		hrefWebp: 'graphics/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL-2560.webp',
+		href: 'graphics/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL-2560.png',
 		imgSrc: 'graphics/Uzaleznienia-Behawioralne-2018-Batorego-Ulotka-DL.png',
 		title: 'Uzależnienia Behawioralne',
 		year: '2018',
@@ -234,7 +241,8 @@ const graphicProjects = [
 	},
 
 	{
-		href: 'graphics/Candis-Konopie-2021-Czarna-Ulotka-DL-large.png',
+		hrefWebp: 'graphics/Candis-Konopie-2021-Czarna-Ulotka-DL-2560.webp',
+		href: 'graphics/Candis-Konopie-2021-Czarna-Ulotka-DL-2560.png',
 		imgSrc: 'graphics/Candis-Konopie-2021-Czarna-Ulotka-DL.png',
 		title: 'Candis',
 		year: '2021',
@@ -242,7 +250,8 @@ const graphicProjects = [
 	},
 
 	{
-		href: 'graphics/Uzaleznienia-Behawioralne-2019-Batorego-Ulotka-DL-large.png',
+		hrefWebp: 'graphics/Uzaleznienia-Behawioralne-2019-Batorego-Ulotka-DL-2560.webp',
+		href: 'graphics/Uzaleznienia-Behawioralne-2019-Batorego-Ulotka-DL-2560.png',
 		imgSrc: 'graphics/Uzaleznienia-Behawioralne-2019-Batorego-Ulotka-DL.png',
 		title: 'Uzależnienia Behawioralne',
 		year: '2019',
