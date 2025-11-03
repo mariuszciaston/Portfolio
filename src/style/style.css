@@ -483,6 +483,13 @@ a {
 	}
 }
 
+#second,
+#third,
+#fourth,
+.lazy {
+	content-visibility: auto;
+}
+
 /* .item {
 	border: solid 1px blue;
 }

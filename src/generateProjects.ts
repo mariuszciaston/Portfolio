@@ -17,6 +17,7 @@ function generateProjects(
 			const isFirstItem = index === 0;
 			const fetchPriorityAttr = isFirstItem ? 'fetchpriority="high"' : '';
 			const loadingAttr = isFirstItem ? '' : 'loading="lazy"';
+			const lazyClass = isFirstItem ? '' : 'lazy';
 
 			const sizes =
 				'(max-width: 575px) calc(100vw - 6rem), (max-width: 671px) calc(100vw - 8rem), (max-width: 991px) calc((100vw - 14rem) / 2), (max-width: 1151px) calc((100vw - 20rem) / 3), calc((min(100vw, 2560px) - 26rem) / 4)';
@@ -49,7 +50,7 @@ function generateProjects(
 							<source srcset="${srcsetImage}" sizes="${sizes}" type="image/${imageExtension}">
 							<img src="${project.imgSrc}" alt="${
 					project.title
-				}" ${loadingAttr} ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'">
+				}" class="${lazyClass}" ${loadingAttr} ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'">
 						</picture>
 					</div>
 					${textHTML}
@@ -62,7 +63,7 @@ function generateProjects(
 				return `
                     <div class="item-container">
                         <div class="item">
-                            <iframe style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem;  box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}" ${fetchPriorityAttr}></iframe>
+                            <iframe class="${lazyClass}" style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem;  box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}" ${fetchPriorityAttr}></iframe>
                         </div>
                     </div>
                     `;
@@ -72,7 +73,7 @@ function generateProjects(
 				return `
                 <div class="item-container">
                     <div class="item">
-                        <iframe width="100%" scrolling="no" frameborder="no" allow="autoplay" style="border-radius: 1rem;" title="SoundCloud music player" src="${project.iframeSrc}" ${fetchPriorityAttr}></iframe>
+                        <iframe class="${lazyClass}" width="100%" scrolling="no" frameborder="no" allow="autoplay" style="border-radius: 1rem;" title="SoundCloud music player" src="${project.iframeSrc}" ${fetchPriorityAttr}></iframe>
                         <div class="text">
                             <p class="bold">${project.title}</p>
                             <p class="secondary"> ${project.description} | ${project.year}</p>
