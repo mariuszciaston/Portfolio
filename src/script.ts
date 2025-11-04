@@ -1,12 +1,12 @@
-import { mocapProjects, musicProjects, graphicProjects } from './content';
-import { generateProjects } from './generateProjects';
+import { mocapProjects, musicProjects, graphicProjects, webdevProjects } from './content';
+import { generatePlaceholder, renderProject } from './generateProjects';
 
-declare global {
-	interface Window {
-		dataLayer: any[];
-		gtag: (...args: any[]) => void;
-	}
-}
+// declare global {
+// 	interface Window {
+// 		dataLayer: any[];
+// 		gtag: (...args: any[]) => void;
+// 	}
+// }
 
 const moonIcon = document.querySelector('#theme-switch .fa-moon');
 const sunIcon = document.querySelector('#theme-switch .fa-sun');
@@ -107,6 +107,26 @@ function apply3DEffect() {
 	});
 }
 
+function setupViewportRendering() {
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				const container = entry.target as HTMLElement;
+				if (container.dataset.rendered === 'false') {
+					renderProject(container);
+					container.dataset.rendered = 'true';
+					observer.unobserve(container);
+					// apply3DEffect();
+				}
+			}
+		});
+	}, { rootMargin: '0px' });
+
+	document.querySelectorAll('.item-container[data-rendered="false"]').forEach((container) => {
+		observer.observe(container);
+	});
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 	initTheme();
 	watchTheme();
@@ -114,47 +134,51 @@ document.addEventListener('DOMContentLoaded', () => {
 	toggleGrayscale();
 	topBarScrollFixIOS();
 	document.querySelector('#heading h1')?.addEventListener('click', () => window.location.reload());
-	apply3DEffect();
 
-	let mocapGenerated = false;
-	let musicGenerated = false;
-	let graphicsGenerated = false;
+	// Initialize remaining webdev projects (skip first one which is static in HTML)
+	// document.querySelector('.grid-container.webdev')!.innerHTML += generatePlaceholder(webdevProjects.slice(1), 'webdev');
+	// setupViewportRendering();
 
-	const sectionTitles = document.querySelectorAll('section h2');
-	sectionTitles.forEach((sectionTitle) => {
-		sectionTitle.addEventListener('click', () => {
-			sectionTitle.parentElement.classList.toggle('hidden');
-			if (sectionTitle.parentElement.id === 'second' && !mocapGenerated) {
-				document.querySelector('.grid-container.mocap').innerHTML = generateProjects(mocapProjects, 'mocap');
-				mocapGenerated = true;
-				apply3DEffect();
-			}
-			if (sectionTitle.parentElement.id === 'third' && !musicGenerated) {
-				document.querySelector('.grid-container.music').innerHTML = generateProjects(musicProjects, 'music');
-				musicGenerated = true;
-			}
-			if (sectionTitle.parentElement.id === 'fourth' && !graphicsGenerated) {
-				document.querySelector('.grid-container.graphics').innerHTML = generateProjects(graphicProjects, 'graphics');
-				graphicsGenerated = true;
-				apply3DEffect();
-			}
-		});
-	});
+	// let mocapGenerated = false;
+	// let musicGenerated = false;
+	// let graphicsGenerated = false;
 
-	setTimeout(() => {
-		const GA_MEASUREMENT_ID = 'G-L4NJKX8FMC';
-		const script = document.createElement('script');
-		script.async = true;
-		script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-		document.head.appendChild(script);
+	// const sectionTitles = document.querySelectorAll('section h2');
+	// sectionTitles.forEach((sectionTitle) => {
+	// 	sectionTitle.addEventListener('click', () => {
+	// 		sectionTitle.parentElement.classList.toggle('hidden');
+	// 		if (sectionTitle.parentElement.id === 'second' && !mocapGenerated) {
+	// 			document.querySelector('.grid-container.mocap')!.innerHTML = generateProjects(mocapProjects, 'mocap');
+	// 			mocapGenerated = true;
+	// 			setupViewportRendering();
+	// 		}
+	// 		if (sectionTitle.parentElement.id === 'third' && !musicGenerated) {
+	// 			document.querySelector('.grid-container.music')!.innerHTML = generateProjects(musicProjects, 'music');
+	// 			musicGenerated = true;
+	// 			setupViewportRendering();
+	// 		}
+	// 		if (sectionTitle.parentElement.id === 'fourth' && !graphicsGenerated) {
+	// 			document.querySelector('.grid-container.graphics')!.innerHTML = generateProjects(graphicProjects, 'graphics');
+	// 			graphicsGenerated = true;
+	// 			setupViewportRendering();
+	// 		}
+	// 	});
+	// });
 
-		window.dataLayer = window.dataLayer || [];
-		function gtag(...args: any[]) {
-			window.dataLayer.push(args);
-		}
-		(window as any).gtag = gtag;
+	// setTimeout(() => {
+	// 	const GA_MEASUREMENT_ID = 'G-L4NJKX8FMC';
+	// 	const script = document.createElement('script');
+	// 	script.async = true;
+	// 	script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+	// 	document.head.appendChild(script);
 
-		gtag('js', new Date());
-		gtag('config', GA_MEASUREMENT_ID);
-	}, 4000);
+	// 	window.dataLayer = window.dataLayer || [];
+	// 	function gtag(...args: any[]) {
+	// 		window.dataLayer.push(args);
+	// 	}
+	// 	(window as any).gtag = gtag;
+
+	// 	gtag('js', new Date());
+	// 	gtag('config', GA_MEASUREMENT_ID);
+	// }, 4000);
 });

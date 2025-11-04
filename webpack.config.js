@@ -10,7 +10,7 @@ import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
 import { webdevProjects } from './src/content.ts';
 import { widths } from './src/generateProjects.ts';
-import { generateProjects } from './src/generateProjects.ts';
+import { generateStaticProject } from './src/generateProjects.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,8 +39,8 @@ export default {
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
 			templateParameters: {
-				webdevHtml: generateProjects(webdevProjects, 'webdev'),
-				// webdevHtml: generateProjects(webdevProjects.slice(0, 1), 'webdev'),
+				// webdevHtml: generateStaticProject(webdevProjects, 'webdev'),
+				webdevHtml: generateStaticProject(webdevProjects.slice(0, 1), 'webdev'),
 			},
 			// inject: 'body',
 			// chunksSortMode: 'manual',
