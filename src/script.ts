@@ -8,10 +8,10 @@ declare global {
 	}
 }
 
-function initTheme() {
-	const moonIcon = document.querySelector('#theme-switch .fa-moon');
-	const sunIcon = document.querySelector('#theme-switch .fa-sun');
+const moonIcon = document.querySelector('#theme-switch .fa-moon');
+const sunIcon = document.querySelector('#theme-switch .fa-sun');
 
+function initTheme() {
 	if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 		document.documentElement.className = 'theme-dark';
 		moonIcon.classList.add('hide');
@@ -24,8 +24,6 @@ function initTheme() {
 }
 
 function toggleTheme() {
-	const moonIcon = document.querySelector('#theme-switch .fa-moon');
-	const sunIcon = document.querySelector('#theme-switch .fa-sun');
 	const isDark = document.documentElement.className === 'theme-dark';
 
 	if (isDark) {
@@ -40,9 +38,6 @@ function toggleTheme() {
 }
 
 function watchTheme() {
-	const moonIcon = document.querySelector('#theme-switch .fa-moon');
-	const sunIcon = document.querySelector('#theme-switch .fa-sun');
-
 	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
 		if (event.matches) {
 			document.documentElement.className = 'theme-dark';

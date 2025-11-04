@@ -27,18 +27,6 @@
     <link rel="preload" href="fonts/roboto-v49-latin-500.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="fonts/roboto-v49-latin-700.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <meta name="darkreader-lock">
-    <script>
-        (function () {
-            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            document.documentElement.className = isDark ? 'theme-dark' : 'theme-light';
-
-            const style = document.createElement('style');
-            style.textContent = isDark
-                ? '#theme-switch .fa-moon { display: none; } #theme-switch .fa-sun { display: inline; }'
-                : '#theme-switch .fa-sun { display: none; } #theme-switch .fa-moon { display: inline; }';
-            document.head.appendChild(style);
-        })();
-    </script>
 </head>
 
 <body>
@@ -113,6 +101,21 @@
             </span>
         </footer>
     </div>
+    <script>
+        (function () {
+            const moonIcon = document.querySelector('#theme-switch .fa-moon');
+            const sunIcon = document.querySelector('#theme-switch .fa-sun');
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.className = 'theme-dark';
+                moonIcon.classList.add('hide');
+                sunIcon.classList.remove('hide');
+            } else {
+                document.documentElement.className = 'theme-light';
+                moonIcon.classList.remove('hide');
+                sunIcon.classList.add('hide');
+            }
+        })();
+    </script>
 </body>
 
 </html>
