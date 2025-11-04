@@ -135,9 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	topBarScrollFixIOS();
 	document.querySelector('#heading h1')?.addEventListener('click', () => window.location.reload());
 
-	// Initialize remaining webdev projects (skip first one which is static in HTML)
-	document.querySelector('.grid-container.webdev')!.innerHTML += generatePlaceholder(webdevProjects.slice(1), 'webdev');
-	// setupViewportRendering();
+	// document.querySelector('.grid-container.webdev')!.innerHTML += generatePlaceholder(webdevProjects.slice(1), 'webdev');
+	setupViewportRendering();
 
 	// let mocapGenerated = false;
 	// let musicGenerated = false;

@@ -9,7 +9,7 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
 import { webdevProjects } from './src/content.ts';
-import { widths } from './src/generateProjects.ts';
+import { generatePlaceholder, widths } from './src/generateProjects.ts';
 import { generateStaticProject } from './src/generateProjects.ts';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -40,7 +40,8 @@ export default {
 			template: './src/index.html',
 			templateParameters: {
 				// webdevHtml: generateStaticProject(webdevProjects, 'webdev'),
-				webdevHtml: generateStaticProject(webdevProjects.slice(0, 1), 'webdev'),
+				webdevStaticHtml: generateStaticProject(webdevProjects.slice(0, 1), 'webdev'),
+				webdevPlaceholderHtml: generatePlaceholder(webdevProjects.slice(1), 'webdev'),
 			},
 			// inject: 'body',
 			// chunksSortMode: 'manual',
