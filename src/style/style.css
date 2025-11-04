@@ -322,12 +322,14 @@ section.hidden > .grid-container--fill > * {
 	border-radius: clamp(1rem, calc((16 / 288) * 100cqw), 2rem);
 }
 
-/* .item-container[data-rendered='false'] {
-	aspect-ratio: 4/3;
+.item-container[data-rendered='false'] .text {
+	visibility: hidden;
+}
+
+.item-container[data-rendered='false'] .item:hover {
 	background-color: var(--card-bcg);
 	border: 0.03125rem solid var(--card-border);
-	box-sizing: border-box;
-} */
+}
 
 .item {
 	transform-style: preserve-3d;

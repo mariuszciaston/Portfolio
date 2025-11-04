@@ -97,10 +97,6 @@ return array
 
 
 
-/**
- * Generates lightweight placeholder divs for projects.
- * The actual project HTML will be rendered later by renderProject when in view.
- */
 function generatePlaceholder(
 	array: {
 		iframeSrc?: string;
@@ -113,43 +109,75 @@ function generatePlaceholder(
 	}[],
 	type: 'webdev' | 'mocap' | 'music' | 'graphics'
 ) {
-	// return array
-	// 	.map((project, index) => {
-	// 		const isFirstItem = index === 0;
-			
-	// 		if (isFirstItem) {
-	// 			// Render first project statically
-	// 			return generateStaticProject(project, type, index);
-	// 		}
-			
-	// 		// Create placeholders for other projects
-	// 		if (type === 'mocap') {
-	// 			return project.iframeSrc
-	// 				? `<div class="item-container" data-rendered="false" data-project='${JSON.stringify(project)}' data-type="${type}" data-index="${index}"></div>`
-	// 				: `<div class="item-container-wrap"><div class="item-container" data-rendered="false" data-project='${JSON.stringify(project)}' data-type="${type}" data-index="${index}"></div></div>`;
-	// 		}
+	return array
+		.map((project, index) => {
 
-	// 		if (type === 'music') {
-	// 			return `<div class="item-container" data-rendered="false" data-project='${JSON.stringify(project)}' data-type="${type}" data-index="${index}"></div>`;
-	// 		}
 
-	// 		// Default for webdev and graphics
-	// 		return `<div class="item-container-wrap"><div class="item-container" data-rendered="false" data-project='${JSON.stringify(project)}' data-type="${type}" data-index="${index}"></div></div>`;
-	// 	})
-	// 	.join('');
+
+
+if (type === 'webdev' || (type === 'mocap' && !project.iframeSrc) || type === 'graphics') {
+
+	let textHTML = '';
+		if (type !== 'mocap') {
+			// textHTML = `<div class="text"><p class="bold">&nbsp</p><p class="secondary">&nbsp</p></div>`;
+			textHTML = `<div class="text"><p class="bold">${project.title}</p><p class="secondary">${project.description} | ${project.year}</p></div>`;
+		}
+
+
+
+
+
+
+
+
+
+return `<div class="item-container-wrap"><div class="item-container" data-rendered="false" data-project='${JSON.stringify(project)}' data-type="${type}" data-index="${index}">
+
+
+
+<a class="item">
+
+<div class="img-container">
+
+</div>
+
+
+${textHTML}
+
+
+</a>
+
+
+
+
+</div></div>`;
+
+
+
+
+
 }
 
 
 
 
 
+	if (type === 'mocap' && project.iframeSrc) {
 
+`<div class="item-container" data-rendered="false" data-project='${JSON.stringify(project)}' data-type="${type}" data-index="${index}"></div>`
 
+	}
 
+	
 
+			if (type === 'music') {
+				return `<div class="item-container" data-rendered="false" data-project='${JSON.stringify(project)}' data-type="${type}" data-index="${index}"></div>`;
+			}
 
-
-
+		
+		})
+		.join('');
+}
 
 
 
