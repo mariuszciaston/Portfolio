@@ -1,12 +1,12 @@
-import { mocapProjects, musicProjects, graphicProjects, webdevProjects } from './content';
+import { mocapProjects, musicProjects, graphicProjects } from './content';
 import { generatePlaceholder, renderProject } from './generateProjects';
 
-// declare global {
-// 	interface Window {
-// 		dataLayer: any[];
-// 		gtag: (...args: any[]) => void;
-// 	}
-// }
+declare global {
+	interface Window {
+		dataLayer: any[];
+		gtag: (...args: any[]) => void;
+	}
+}
 
 const moonIcon = document.querySelector('#theme-switch .fa-moon');
 const sunIcon = document.querySelector('#theme-switch .fa-sun');
@@ -168,20 +168,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	});
 
-	// setTimeout(() => {
-	// 	const GA_MEASUREMENT_ID = 'G-L4NJKX8FMC';
-	// 	const script = document.createElement('script');
-	// 	script.async = true;
-	// 	script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-	// 	document.head.appendChild(script);
+	setTimeout(() => {
+		const GA_MEASUREMENT_ID = 'G-L4NJKX8FMC';
+		const script = document.createElement('script');
+		script.async = true;
+		script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+		document.head.appendChild(script);
 
-	// 	window.dataLayer = window.dataLayer || [];
-	// 	function gtag(...args: any[]) {
-	// 		window.dataLayer.push(args);
-	// 	}
-	// 	(window as any).gtag = gtag;
+		window.dataLayer = window.dataLayer || [];
+		function gtag(...args: any[]) {
+			window.dataLayer.push(args);
+		}
+		(window as any).gtag = gtag;
 
-	// 	gtag('js', new Date());
-	// 	gtag('config', GA_MEASUREMENT_ID);
-	// }, 4000);
+		gtag('js', new Date());
+		gtag('config', GA_MEASUREMENT_ID);
+	}, 4000);
 });
