@@ -31,7 +31,7 @@ function generateStaticProject(
 					textHTML = `<div class="text"><p class="bold">${project.title}</p><p class="secondary">${project.description} | ${project.year}</p></div>`;
 				}
 
-				return `<div class="item-container-wrap"><div class="item-container"><a href="${
+				return `<div class="item-container-wrap"><div class="item-container" data-rendered="true"><a href="${
 					project.hrefWebp || project.href
 				}" target="_blank" class="item"><div class="img-container"><picture><source srcset="${srcsetWebP}" sizes="${sizes}" type="image/webp"><source srcset="${srcsetImage}" sizes="${sizes}" type="image/${imageExtension}"><img src="${
 					project.imgSrc
@@ -41,7 +41,7 @@ function generateStaticProject(
 			}
 
 			if (type === 'mocap' && project.iframeSrc) {
-				return `<div class="item-container"><div class="item"><iframe style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem; box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}" ${fetchPriorityAttr}></iframe></div></div>`;
+				return `<div class="item-container" data-rendered="true"><div class="item"><iframe style="aspect-ratio: 4 / 3; width: 100%; height: auto; border-radius: 1rem; box-sizing: border-box;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="${project.iframeSrc}" ${fetchPriorityAttr}></iframe></div></div>`;
 			}
 
 			if (type === 'music') {

@@ -74,36 +74,34 @@ const topBarScrollFixIOS = () => {
 	}
 };
 
-function apply3DEffect() {
-	const containers = document.querySelectorAll('.item-container');
+function apply3DEffect(container: HTMLElement) {
+	if (container.dataset.has3d === 'true') return;
+	const item = container.querySelector('.item') as HTMLElement;
+	if (item.querySelector('iframe')) return;
 
-	containers.forEach((container) => {
-		const item = container.querySelector('.item') as HTMLElement;
-		if (item.querySelector('iframe')) return;
+	container.dataset.has3d = 'true';
+	container.addEventListener('mousemove', (e: MouseEvent) => {
+		item.classList.remove('leaving');
+		const rect = container.getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const y = e.clientY - rect.top;
 
-		container.addEventListener('mousemove', (e: MouseEvent) => {
+		const centerX = rect.width / 2;
+		const centerY = rect.height / 2;
+
+		const rotateY = ((x - centerX) / centerX) * 5;
+		const rotateX = -((y - centerY) / centerY) * 5;
+
+		item.style.transform = `perspective(var(--perspective)) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+	});
+
+	container.addEventListener('mouseleave', () => {
+		item.classList.add('leaving');
+		item.style.transform = `perspective(var(--perspective)) rotateX(0) rotateY(0)`;
+
+		setTimeout(() => {
 			item.classList.remove('leaving');
-			const rect = container.getBoundingClientRect();
-			const x = e.clientX - rect.left;
-			const y = e.clientY - rect.top;
-
-			const centerX = rect.width / 2;
-			const centerY = rect.height / 2;
-
-			const rotateY = ((x - centerX) / centerX) * 5;
-			const rotateX = -((y - centerY) / centerY) * 5;
-
-			item.style.transform = `perspective(var(--perspective)) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-		});
-
-		container.addEventListener('mouseleave', () => {
-			item.classList.add('leaving');
-			item.style.transform = `perspective(var(--perspective)) rotateX(0) rotateY(0)`;
-
-			setTimeout(() => {
-				item.classList.remove('leaving');
-			}, 1000);
-		});
+		}, 1000);
 	});
 }
 
@@ -117,7 +115,7 @@ function setupViewportRendering() {
 						renderProject(container);
 						container.dataset.rendered = 'true';
 						observer.unobserve(container);
-						// apply3DEffect();
+						apply3DEffect(container);
 					}
 				}
 			});
@@ -138,9 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	topBarScrollFixIOS();
 	document.querySelector('#heading h1')?.addEventListener('click', () => window.location.reload());
 
-	setupViewportRendering();
+	document.querySelectorAll('.item-container[data-rendered="true"]:not([data-has3d])').forEach((container) => {
+		apply3DEffect(container as HTMLElement);
+	});
 
-	// apply3DEffect();
+	setupViewportRendering();
 
 	let mocapGenerated = false;
 	let musicGenerated = false;
