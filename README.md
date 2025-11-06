@@ -14,6 +14,10 @@ My portfolio website v1.2 🔥🔥🔥
 
 - Delayed Google Analytics (I plan to research Partytown to improve performance by offloading third-party scripts to a web worker)
 
+- Unfortunately, GitHub Pages does not support asset caching, which could have helped even more
+  
+- In the future, I will consider moving the project to the Astro framework
+
 All of these changes, along with other optimizations, resulted in 4× 100% scores in PageSpeed Insights / Lighthouse for both Mobile and Desktop. Which I am very pleased with. <br><br>
 
 ![Portfolio-v1.2_light.png](Portfolio-v1.2_light.png)| 
