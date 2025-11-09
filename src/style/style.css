@@ -306,6 +306,10 @@ section.hidden > .grid-container--fill > * {
 	margin-bottom: -0.0625rem;
 }
 
+.item:has(img[data-lightbox]) {
+	cursor: pointer;
+}
+
 .item p {
 	line-height: 1.5em;
 	margin: 0;
@@ -443,6 +447,130 @@ a {
 	transform: scale(1.2);
 }
 
+.lightbox {
+	display: none;
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	background-color: hsla(0, 0%, 0%, 0.5);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+.lightbox.active {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.lightbox-content {
+	position: relative;
+	width: min(calc(100vw - 2rem), calc((100vh - 2rem) * 4 / 3));
+	height: min(calc(100vh - 2rem), calc((100vw - 2rem) * 3 / 4));
+	max-width: calc(100% - 2rem);
+	max-height: calc(100% - 2rem);
+	aspect-ratio: 4/3;
+	min-width: 256px;
+	min-height: 192px;
+}
+
+.lightbox img {
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 4/3;
+	object-fit: contain;
+	border-radius: 1rem;
+	border-radius: clamp(1rem, calc((16 / 288) * 100cqw), 2rem);
+	box-shadow: hsla(0, 0%, 0%, 0) 0px 0px 0px 0px, hsla(0, 0%, 0%, 0) 0px 0px 0px 0px, hsla(0, 0%, 0%, 0.1) 0px 1px 3px 0px,
+		hsla(0, 0%, 0%, 0.1) 0px 1px 2px -1px;
+	user-select: none;
+	min-width: 256px;
+	min-height: 192px;
+}
+.lightbox-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	cursor: pointer;
+	z-index: 1001;
+	color: white;
+	user-select: none;
+
+	border: none;
+	background-color: unset;
+	padding: 0;
+
+	/* width: 2.4rem;
+	height: 2.4rem; */
+	/* width: 3.6rem;
+	height: 3.6rem; */
+	width: 3rem;
+	height: 3rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: hsla(0, 0%, 0%, 0.25);
+	border-radius: 50%;
+}
+
+.lightbox-close svg {
+	width: 2.4rem;
+	height: 2.4rem;
+}
+
+.lightbox-close:hover {
+	background-color: black;
+}
+
+.lightbox-nav {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	color: white;
+	cursor: pointer;
+	z-index: 1001;
+	user-select: none;
+	border: none;
+	background-color: hsla(0, 0%, 0%, 0.25);
+	padding: 0;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	/* width: 2.4rem;
+	height: 2.4rem; */
+	/* width: 3.6rem;
+	height: 3.6rem; */
+	width: 3rem;
+	height: 3rem;
+}
+
+.lightbox-nav svg {
+	width: 2.4rem;
+	height: 2.4rem;
+}
+
+.lightbox-nav.hidden {
+	display: none;
+}
+
+.lightbox-prev {
+	left: 1rem;
+}
+
+.lightbox-next {
+	right: 1rem;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+	background-color: black;
+}
+
 @media (not (any-pointer: fine)) {
 	#grayscale-switch {
 		display: none !important;
@@ -463,6 +591,13 @@ a {
 
 	hr.margin {
 		margin: 0 2rem;
+	}
+
+	.lightbox-content {
+		width: min(calc(100vw - 4rem), calc((100vh - 4rem) * 4 / 3));
+		height: min(calc(100vh - 4rem), calc((100vw - 4rem) * 3 / 4));
+		max-width: calc(100% - 4rem);
+		max-height: calc(100% - 4rem);
 	}
 }
 

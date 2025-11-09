@@ -31,13 +31,21 @@ function generateStaticProject(
 					textHTML = `<div class="text"><p class="bold">${project.title}</p><p class="secondary">${project.description} | ${project.year}</p></div>`;
 				}
 
-				return `<div class="item-container-wrap"><div class="item-container" data-rendered="true"><a href="${
-					project.hrefWebp || project.href
-				}" target="_blank" class="item"><div class="img-container"><picture><source srcset="${srcsetWebP}" sizes="${sizes}" type="image/webp"><source srcset="${srcsetImage}" sizes="${sizes}" type="image/${imageExtension}"><img src="${
-					project.imgSrc
-				}" alt="${
-					project.title
-				}" ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'"></picture></div>${textHTML}</a></div></div>`;
+				if (type === 'mocap' || type === 'graphics') {
+					return `<div class="item-container-wrap"><div class="item-container" data-rendered="true"><div class="item"><div class="img-container"><picture><source srcset="${srcsetWebP}" sizes="${sizes}" type="image/webp"><source srcset="${srcsetImage}" sizes="${sizes}" type="image/${imageExtension}"><img src="${
+						project.imgSrc
+					}" alt="${project.title}" data-lightbox="${type}" data-full="${
+						project.hrefWebp || project.href
+					}" ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'"></picture></div>${textHTML}</div></div></div>`;
+				} else {
+					return `<div class="item-container-wrap"><div class="item-container" data-rendered="true"><a href="${
+						project.hrefWebp || project.href
+					}" target="_blank" class="item"><div class="img-container"><picture><source srcset="${srcsetWebP}" sizes="${sizes}" type="image/webp"><source srcset="${srcsetImage}" sizes="${sizes}" type="image/${imageExtension}"><img src="${
+						project.imgSrc
+					}" alt="${
+						project.title
+					}" ${fetchPriorityAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'"></picture></div>${textHTML}</a></div></div>`;
+				}
 			}
 
 			if (type === 'mocap' && project.iframeSrc) {
@@ -116,18 +124,35 @@ function renderProject(container: HTMLElement) {
 		`;
 		}
 
-		container.innerHTML = `
-			<a href="${project.hrefWebp || project.href}" target="_blank" class="item">
-				<div class="img-container">
-					<picture>
-						<source srcset="${srcsetWebP}" sizes="${sizes}" type="image/webp">
-						<source srcset="${srcsetImage}" sizes="${sizes}" type="image/${imageExtension}">
-						<img src="${project.imgSrc}" alt="${project.title}" ${loadingAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'">
-					</picture>
+		if (type === 'mocap' || type === 'graphics') {
+			container.innerHTML = `
+				<div class="item">
+					<div class="img-container">
+						<picture>
+							<source srcset="${srcsetWebP}" sizes="${sizes}" type="image/webp">
+							<source srcset="${srcsetImage}" sizes="${sizes}" type="image/${imageExtension}">
+							<img src="${project.imgSrc}" alt="${project.title}" data-lightbox="${type}" data-full="${
+				project.hrefWebp || project.href
+			}" ${loadingAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'">
+						</picture>
+					</div>
+					${textHTML}
 				</div>
-				${textHTML}
-			</a>
-		`;
+			`;
+		} else {
+			container.innerHTML = `
+				<a href="${project.hrefWebp || project.href}" target="_blank" class="item">
+					<div class="img-container">
+						<picture>
+							<source srcset="${srcsetWebP}" sizes="${sizes}" type="image/webp">
+							<source srcset="${srcsetImage}" sizes="${sizes}" type="image/${imageExtension}">
+							<img src="${project.imgSrc}" alt="${project.title}" ${loadingAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'">
+						</picture>
+					</div>
+					${textHTML}
+				</a>
+			`;
+		}
 		return;
 	}
 

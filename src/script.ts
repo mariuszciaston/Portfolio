@@ -8,8 +8,8 @@ declare global {
 	}
 }
 
-const moonIcon = document.querySelector('#theme-switch .fa-moon');
-const sunIcon = document.querySelector('#theme-switch .fa-sun');
+const moonIcon = document.querySelector('#theme-switch .fa-moon')!;
+const sunIcon = document.querySelector('#theme-switch .fa-sun')!;
 
 function initTheme() {
 	if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -128,6 +128,75 @@ function setupViewportRendering() {
 	});
 }
 
+// Lightbox functionality
+const lightbox = document.getElementById('lightbox')!;
+const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+const lightboxClose = document.getElementById('lightbox-close')!;
+const lightboxPrev = document.getElementById('lightbox-prev')!;
+const lightboxNext = document.getElementById('lightbox-next')!;
+let currentImages: string[] = [];
+let currentIndex = 0;
+
+function openLightbox(imgSrc: string, images: string[], index: number) {
+	lightboxImg.src = imgSrc;
+	currentImages = images;
+	currentIndex = index;
+	lightbox.classList.add('active');
+	document.body.style.overflow = 'hidden';
+
+	// Hide navigation if only one image
+	if (images.length <= 1) {
+		lightboxPrev.classList.add('hidden');
+		lightboxNext.classList.add('hidden');
+	} else {
+		lightboxPrev.classList.remove('hidden');
+		lightboxNext.classList.remove('hidden');
+	}
+}
+
+function closeLightbox() {
+	lightbox.classList.remove('active');
+	document.body.style.overflow = '';
+}
+
+function showPrevImage() {
+	currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+	lightboxImg.src = currentImages[currentIndex];
+}
+
+function showNextImage() {
+	currentIndex = (currentIndex + 1) % currentImages.length;
+	lightboxImg.src = currentImages[currentIndex];
+}
+
+function loadAllImagesInCategory(category: string) {
+	document.querySelectorAll(`.item-container[data-rendered="false"][data-type="${category}"]`).forEach((container) => {
+		renderProject(container as HTMLElement);
+		(container as HTMLElement).dataset.rendered = 'true';
+	});
+}
+
+function setupLightbox() {
+	document.addEventListener('click', (e) => {
+		const target = e.target as HTMLElement;
+
+		// Check if clicked on an item that contains a lightbox image
+		const item = target.closest('.item');
+		if (item && !item.hasAttribute('href')) {
+			const img = item.querySelector('img[data-lightbox]') as HTMLImageElement;
+			if (img) {
+				e.preventDefault();
+				const category = img.dataset.lightbox;
+				loadAllImagesInCategory(category!);
+				const allImages = Array.from(document.querySelectorAll(`img[data-lightbox="${category}"]`)) as HTMLImageElement[];
+				const imageSrcs = allImages.map((img) => img.dataset.full || img.src);
+				const currentImgIndex = allImages.indexOf(img);
+				openLightbox(img.dataset.full || img.src, imageSrcs, currentImgIndex);
+			}
+		}
+	});
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 	initTheme();
 	watchTheme();
@@ -167,6 +236,23 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 	});
+
+	// Setup lightbox event listeners
+	lightboxClose.addEventListener('click', closeLightbox);
+	lightboxPrev.addEventListener('click', showPrevImage);
+	lightboxNext.addEventListener('click', showNextImage);
+	lightbox.addEventListener('click', (e) => {
+		if (e.target === lightbox) closeLightbox();
+	});
+
+	document.addEventListener('keydown', (e) => {
+		if (!lightbox.classList.contains('active')) return;
+		if (e.key === 'Escape') closeLightbox();
+		if (e.key === 'ArrowLeft') showPrevImage();
+		if (e.key === 'ArrowRight') showNextImage();
+	});
+
+	setupLightbox();
 
 	setTimeout(() => {
 		const GA_MEASUREMENT_ID = 'G-L4NJKX8FMC';
