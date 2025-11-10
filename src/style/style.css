@@ -494,7 +494,7 @@ a {
 	min-height: 192px;
 }
 .lightbox-close {
-	position: absolute;
+	position: fixed;
 	top: 1rem;
 	right: 1rem;
 	cursor: pointer;
@@ -530,7 +530,7 @@ a {
 }
 
 .lightbox-nav {
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	transform: translateY(-50%);
 	color: white;
@@ -607,12 +607,45 @@ a {
 		max-width: calc(100% - 4rem);
 		max-height: calc(100% - 4rem);
 	}
+
+	.lightbox-close {
+		top: 2rem;
+		right: 2rem;
+	}
+
+	.lightbox-prev {
+		left: 2rem;
+	}
+
+	.lightbox-next {
+		right: 2rem;
+	}
 }
 
 @media only screen and (min-width: 614px) {
 	main {
 		padding-top: 4.185rem;
 		padding-bottom: 6.006rem;
+	}
+}
+
+@media only screen and (min-width: 768px) and (min-height: 1024px), only screen and (min-width: 1024px) {
+	.lightbox-close {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+	}
+
+	.lightbox-nav {
+		position: absolute;
+	}
+
+	.lightbox-prev {
+		left: 1rem;
+	}
+
+	.lightbox-next {
+		right: 1rem;
 	}
 }
 
