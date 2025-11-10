@@ -469,6 +469,10 @@ a {
 	position: relative;
 	width: min(calc(100vw - 2rem), calc((100vh - 2rem) * 4 / 3));
 	height: min(calc(100vh - 2rem), calc((100vw - 2rem) * 3 / 4));
+
+	width: min(calc(100dvw - 2rem), calc((100dvh - 2rem) * 4 / 3));
+	height: min(calc(100dvh - 2rem), calc((100dvw - 2rem) * 3 / 4));
+
 	max-width: calc(100% - 2rem);
 	max-height: calc(100% - 2rem);
 	aspect-ratio: 4/3;
@@ -596,6 +600,10 @@ a {
 	.lightbox-content {
 		width: min(calc(100vw - 4rem), calc((100vh - 4rem) * 4 / 3));
 		height: min(calc(100vh - 4rem), calc((100vw - 4rem) * 3 / 4));
+
+		width: min(calc(100dvw - 4rem), calc((100dvh - 4rem) * 4 / 3));
+		height: min(calc(100dvh - 4rem), calc((100dvw - 4rem) * 3 / 4));
+
 		max-width: calc(100% - 4rem);
 		max-height: calc(100% - 4rem);
 	}
