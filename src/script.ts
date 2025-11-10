@@ -136,9 +136,36 @@ const lightboxPrev = document.getElementById('lightbox-prev')!;
 const lightboxNext = document.getElementById('lightbox-next')!;
 let currentImages: string[] = [];
 let currentIndex = 0;
+let currentFullImg: HTMLImageElement | null = null;
+const imageCache = new Map<string, HTMLImageElement>();
+
+function loadLightboxImage(fullImgSrc: string) {
+	if (currentFullImg) {
+		currentFullImg.onload = null;
+	}
+
+	const correspondingImg = document.querySelector(`img[data-full="${fullImgSrc}"]`) as HTMLImageElement;
+	const smallImgSrc = correspondingImg.currentSrc || correspondingImg.src;
+	lightboxImg.src = smallImgSrc;
+
+	if (imageCache.has(fullImgSrc)) {
+		lightboxImg.src = fullImgSrc;
+		return;
+	}
+
+	const fullImg = new Image();
+	currentFullImg = fullImg;
+	fullImg.onload = () => {
+		if (currentFullImg === fullImg) {
+			imageCache.set(fullImgSrc, fullImg);
+			lightboxImg.src = fullImgSrc;
+		}
+	};
+	fullImg.src = fullImgSrc;
+}
 
 function openLightbox(imgSrc: string, images: string[], index: number) {
-	lightboxImg.src = imgSrc;
+	loadLightboxImage(imgSrc);
 	currentImages = images;
 	currentIndex = index;
 	lightbox.classList.add('active');
@@ -161,12 +188,12 @@ function closeLightbox() {
 
 function showPrevImage() {
 	currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-	lightboxImg.src = currentImages[currentIndex];
+	loadLightboxImage(currentImages[currentIndex]);
 }
 
 function showNextImage() {
 	currentIndex = (currentIndex + 1) % currentImages.length;
-	lightboxImg.src = currentImages[currentIndex];
+	loadLightboxImage(currentImages[currentIndex]);
 }
 
 function loadAllImagesInCategory(category: string) {
