@@ -1,5 +1,13 @@
 const webdevProjects = [
 	{
+		href: 'https://inventory-application-hpvs.onrender.com/',
+		imgSrc: 'webdev/Inventory-Application.png',
+		title: 'Inventory Application',
+		year: '2025',
+		description: 'inventory management app for games',
+	},
+
+	{
 		href: 'https://mini-message-board-production-cd11.up.railway.app/',
 		imgSrc: 'webdev/Mini-Messageboard.png',
 		title: 'Mini Message Board',
