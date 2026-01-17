@@ -143,7 +143,7 @@ header {
 
 #icons {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(6, 1fr);
 	gap: 1rem;
 	/* align-items: center; */
 	/* background-color: blue; */
@@ -432,6 +432,7 @@ a {
 .fa-sun,
 .fa-moon,
 .fa-github,
+.fa-discord,
 .fa-linkedin,
 .fa-envelope {
 	color: var(--text);
@@ -442,6 +443,7 @@ a {
 .fa-sun:hover,
 .fa-moon:hover,
 .fa-github:hover,
+.fa-discord:hover,
 .fa-linkedin:hover,
 .fa-envelope:hover {
 	transform: scale(1.2);
@@ -581,7 +583,7 @@ a {
 	}
 
 	#icons {
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 	}
 }
 
