@@ -1,5 +1,13 @@
 const webdevProjects = [
 	{
+		href: 'https://members-only-mariusz-ciaston.koyeb.app/',
+		imgSrc: 'webdev/Members-Only.png',
+		title: 'Members Only',
+		year: '2026',
+		description: 'a private clubhouse for exclusive conversations',
+	},
+
+	{
 		href: 'https://inventory-application-hpvs.onrender.com/',
 		imgSrc: 'webdev/Inventory-Application.png',
 		title: 'Inventory Application',
