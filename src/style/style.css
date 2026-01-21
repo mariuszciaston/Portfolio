@@ -577,16 +577,6 @@ a {
 	background-color: black;
 }
 
-@media (not (any-pointer: fine)) {
-	#grayscale-switch {
-		display: none !important;
-	}
-
-	#icons {
-		grid-template-columns: repeat(5, 1fr);
-	}
-}
-
 @media only screen and (min-width: 576px) {
 	#heading,
 	main,
@@ -624,7 +614,7 @@ a {
 	}
 }
 
-@media only screen and (min-width: 614px) {
+@media only screen and (min-width: 662px) {
 	main {
 		padding-top: 4.185rem;
 		padding-bottom: 6.006rem;
