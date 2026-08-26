@@ -49,7 +49,7 @@ const webdevProjects = [
 
 	{
 		href: 'https://mariuszciaston.github.io/Portfolio/',
-		imgSrc: 'webdev/Portfolio-v1.2_dark.png',
+		imgSrc: 'webdev/Portfolio-v1.3_dark.png',
 		title: 'Portfolio',
 		year: '2024',
 		description: 'my own portfolio website',

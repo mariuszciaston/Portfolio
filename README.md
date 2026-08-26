@@ -1,4 +1,4 @@
-My portfolio website v1.2 🔥🔥🔥
+My portfolio website v1.3 🔥🔥🔥
 
 [Live Demo](https://mariuszciaston.github.io/Portfolio/) :point_left: <br><br>
 
@@ -20,6 +20,6 @@ My portfolio website v1.2 🔥🔥🔥
 
 All of these changes, along with other optimizations, resulted in 4× 100% scores in PageSpeed Insights / Lighthouse for both Mobile and Desktop. Which I am very pleased with. <br><br>
 
-![Portfolio-v1.2_light.png](Portfolio-v1.2_light.png)| 
+![Portfolio-v1.3_light.png](Portfolio-v1.3_light.png)| 
 ------------- | 
-![Portfolio-v1.2_dark.png](Portfolio-v1.2_dark.png)| 
+![Portfolio-v1.3_dark.png](Portfolio-v1.3_dark.png)| 

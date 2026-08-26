@@ -117,15 +117,26 @@ header {
 #heading {
 	padding: 1rem;
 	margin: 0;
-	font-size: 1.9rem;
-	letter-spacing: 0.1rem;
 	display: flex;
 	justify-content: space-between;
-	gap: 1rem 2rem;
+	gap: 0.75rem 3rem;
 	white-space: nowrap;
 	flex-wrap: wrap;
 	-webkit-backdrop-filter: blur(8px);
 	backdrop-filter: blur(8px);
+}
+
+#name {
+	letter-spacing: 0.1rem;
+	height: 2rem;
+	max-height: 2rem;
+	display: flex;
+	align-items: flex-end;
+}
+
+#name:hover {
+	background-color: var(--text);
+	color: var(--background);
 }
 
 #heading h1 {
@@ -134,18 +145,13 @@ header {
 	font-size: inherit;
 	font-weight: 700;
 	cursor: pointer;
-}
-
-#heading h1:hover {
-	background-color: var(--text);
-	color: var(--background);
+	font-size: 1.625rem;
 }
 
 #icons {
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
-	gap: 1rem;
-	/* align-items: center; */
+	gap: 0.75rem;
 	/* background-color: blue; */
 }
 
@@ -160,8 +166,8 @@ header {
 }
 
 #icons svg {
-	width: 2.4rem;
-	height: 2.4rem;
+	width: 2rem;
+	height: 2rem;
 }
 
 svg.hide {
@@ -176,8 +182,8 @@ main {
 	flex-direction: column;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	padding-top: 7.184rem;
-	padding-bottom: 8.012rem;
+	padding-top: 6.75rem;
+	padding-bottom: 8rem;
 }
 
 .grid-container {
@@ -189,7 +195,8 @@ main {
 h2 {
 	padding: 0;
 	margin: 2rem 0 0 0;
-	font-size: 1.45rem;
+	/* font-size: 1.45rem; */
+	font-size: 1.25rem;
 	font-weight: 300;
 	display: flex;
 	max-width: max-content;
@@ -296,7 +303,10 @@ section.hidden > .grid-container--fill > * {
 .item img {
 	max-width: 100%;
 	border-radius: 1rem;
-	box-shadow: hsla(0, 0%, 0%, 0) 0px 0px 0px 0px, hsla(0, 0%, 0%, 0) 0px 0px 0px 0px, hsla(0, 0%, 0%, 0.1) 0px 1px 3px 0px,
+	box-shadow:
+		hsla(0, 0%, 0%, 0) 0px 0px 0px 0px,
+		hsla(0, 0%, 0%, 0) 0px 0px 0px 0px,
+		hsla(0, 0%, 0%, 0.1) 0px 1px 3px 0px,
 		hsla(0, 0%, 0%, 0.1) 0px 1px 2px -1px;
 	box-sizing: border-box;
 	object-fit: cover;
@@ -372,7 +382,8 @@ p.secondary {
 }
 
 footer {
-	font-size: 0.875rem;
+	/* font-size: 0.875rem; */
+	font-size: 0.75rem;
 	width: 100%;
 	max-width: 2560px;
 	position: fixed;
@@ -387,9 +398,17 @@ footer {
 	justify-content: space-between;
 	white-space: nowrap;
 	flex-wrap: wrap;
-	padding: 1.5rem 1rem;
+	padding: 1rem;
+	height: 2rem;
 	-webkit-backdrop-filter: blur(8px);
 	backdrop-filter: blur(8px);
+}
+
+span#signature {
+	min-height: 2rem;
+	height: 2rem;
+	align-items: center;
+	display: flex;
 }
 
 a {
@@ -489,7 +508,10 @@ a {
 	object-fit: contain;
 	border-radius: 1rem;
 	border-radius: clamp(1rem, calc((16 / 288) * 100cqw), 2rem);
-	box-shadow: hsla(0, 0%, 0%, 0) 0px 0px 0px 0px, hsla(0, 0%, 0%, 0) 0px 0px 0px 0px, hsla(0, 0%, 0%, 0.1) 0px 1px 3px 0px,
+	box-shadow:
+		hsla(0, 0%, 0%, 0) 0px 0px 0px 0px,
+		hsla(0, 0%, 0%, 0) 0px 0px 0px 0px,
+		hsla(0, 0%, 0%, 0.1) 0px 1px 3px 0px,
 		hsla(0, 0%, 0%, 0.1) 0px 1px 2px -1px;
 	user-select: none;
 	min-width: 256px;
@@ -503,18 +525,11 @@ a {
 	z-index: 1001;
 	color: white;
 	user-select: none;
-
 	border: none;
 	background-color: unset;
 	padding: 0;
-
-	/* width: 2.4rem;
-	height: 2.4rem; */
-	/* width: 3.6rem;
-	height: 3.6rem; */
-	width: 3rem;
-	height: 3rem;
-
+	width: 2.5rem;
+	height: 2.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -523,8 +538,8 @@ a {
 }
 
 .lightbox-close svg {
-	width: 2.4rem;
-	height: 2.4rem;
+	width: 2rem;
+	height: 2rem;
 }
 
 .lightbox-close:hover {
@@ -546,18 +561,13 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	/* width: 2.4rem;
-	height: 2.4rem; */
-	/* width: 3.6rem;
-	height: 3.6rem; */
-	width: 3rem;
-	height: 3rem;
+	width: 2.5rem;
+	height: 2.5rem;
 }
 
 .lightbox-nav svg {
-	width: 2.4rem;
-	height: 2.4rem;
+	width: 2rem;
+	height: 2rem;
 }
 
 .lightbox-nav.hidden {
@@ -614,10 +624,10 @@ a {
 	}
 }
 
-@media only screen and (min-width: 662px) {
+@media only screen and (min-width: 619px) {
 	main {
-		padding-top: 4.185rem;
-		padding-bottom: 6.006rem;
+		padding-top: 4rem;
+		padding-bottom: 6rem;
 	}
 }
 
