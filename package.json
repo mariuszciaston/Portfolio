@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "start:dev": "webpack serve --mode development",
+    "start:prod": "webpack serve --mode production",
     "build": "webpack --mode production",
-    "start:prod": "watch 'npm run build' ./src & npx serve dist",
+    "preview:watch": "watch 'npm run build' ./src & npx serve dist",
     "predeploy": "git add -f dist && git commit -m 'force add dist folder'",
     "deploy": "sh -c 'git push origin $(git subtree split --prefix dist main):gh-pages --force'",
     "stop tracking dist": "git rm -r --cached dist && git commit -m 'Stop tracking dist folder'",
