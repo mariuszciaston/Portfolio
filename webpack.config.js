@@ -20,6 +20,11 @@ const resolutionsPlusLarge = [...widths, 2560].map((w) => ({ width: w, height: M
 
 export default {
 	mode: 'production',
+
+	cache: {
+		type: 'filesystem',
+	},
+
 	entry: './src/index.ts',
 	output: {
 		filename: 'main.js',
