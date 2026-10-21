@@ -21,7 +21,7 @@ function generateStaticProject(
 			const fetchPriorityAttr = isFirstItem ? 'fetchpriority="high"' : '';
 
 			if (type === 'webdev' || (type === 'mocap' && !project.iframeSrc) || type === 'graphics') {
-				const baseName = project.imgSrc.replace('.png', '').replace('.jpg', '').replace(`${type}/`, '');
+				const baseName = project.imgSrc?.replace('.png', '').replace('.jpg', '').replace(`${type}/`, '');
 				const imageExtension = type === 'mocap' ? 'jpg' : 'png';
 				const srcsetWebP = widths.map((w) => `${type}/${baseName}-${w}.webp ${w}w`).join(', ');
 				const srcsetImage = widths.map((w) => `${type}/${baseName}-${w}.${imageExtension} ${w}w`).join(', ');
