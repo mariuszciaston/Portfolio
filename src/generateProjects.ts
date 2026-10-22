@@ -1,7 +1,7 @@
 const widths = [278, 384, 480, 556, 768, 960, 1088];
 
 const sizes =
-	'(max-width: 575px) calc(100vw - 6rem), (max-width: 671px) calc(100vw - 8rem), (max-width: 991px) calc((100vw - 14rem) / 2), (max-width: 1151px) calc((100vw - 20rem) / 3), calc((min(100vw, 2560px) - 26rem) / 4)';
+	'(max-width: 575px) calc(100vw - 6rem), (max-width: 671px) calc(100vw - 8rem), (max-width: 991px) calc((100vw - 14rem) / 2), (max-width: 1151px) calc((100vw - 20rem) / 3), (max-width: 3007px) calc((min(100vw, 2560px) - 26rem) / 4),	calc((3008px - 28rem) / 5)';
 
 function generateStaticProject(
 	array: {

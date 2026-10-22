@@ -89,7 +89,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	max-width: 2560px;
+	max-width: 3072px;
 	display: flex;
 }
 
@@ -104,7 +104,7 @@ hr.margin {
 
 header {
 	width: 100%;
-	max-width: 2560px;
+	max-width: 3072px;
 	position: fixed;
 	top: 0;
 	background-color: var(--opacity);
@@ -385,7 +385,7 @@ footer {
 	/* font-size: 0.875rem; */
 	font-size: 0.75rem;
 	width: 100%;
-	max-width: 2560px;
+	max-width: 3072px;
 	position: fixed;
 	bottom: 0;
 	background-color: var(--opacity);
@@ -667,6 +667,12 @@ a {
 
 	.grid-container--fill.music {
 		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media only screen and (min-width: 3008px) {
+	.grid-container--fill {
+		grid-template-columns: repeat(5, 1fr);
 	}
 }
 
