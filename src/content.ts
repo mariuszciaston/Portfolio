@@ -1,10 +1,18 @@
 const webdevProjects = [
 	{
+		href: 'https://file-storage-mariusz-ciaston.koyeb.app/',
+		imgSrc: 'webdev/File-Storage.png',
+		title: 'File Storage',
+		status: '[temporarily unavailable - free database limit reached this month]',
+		year: '2026',
+		description: 'cloud drive for storing files using Prisma ORM and Cloudinary',
+	},
+	{
 		href: 'https://members-only-mariusz-ciaston.koyeb.app/',
 		imgSrc: 'webdev/Members-Only.png',
 		title: 'Members Only',
 		year: '2026',
-		description: 'a private clubhouse for exclusive conversations',
+		description: 'a private clubhouse for exclusive conversations with Passport.js authentication',
 	},
 
 	{
@@ -12,7 +20,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/Inventory-Application.png',
 		title: 'Inventory Application',
 		year: '2025',
-		description: 'inventory management app for games',
+		description: 'inventory management app for games using PostgreSQL',
 	},
 
 	{
@@ -28,7 +36,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/Shopping-Cart.png',
 		title: 'FakeSTORE',
 		year: '2025',
-		description: 'a mock store with basic shopping cart functionality',
+		description: 'a mock store with basic shopping cart functionality using React',
 	},
 
 	{
@@ -36,7 +44,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/PokeMemo.png',
 		title: 'PokeMemo',
 		year: '2024',
-		description: 'Pokemon memory card game',
+		description: 'Pokemon memory card game built with React',
 	},
 
 	{
@@ -44,7 +52,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/CV-Generator.png',
 		title: 'CV Generator',
 		year: '2024',
-		description: 'create resume and export it to pdf file',
+		description: 'React app that create resume and export it to pdf file',
 	},
 
 	{
@@ -52,7 +60,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/Portfolio-v1.3_dark.png',
 		title: 'Portfolio',
 		year: '2024',
-		description: 'my own portfolio website',
+		description: 'my own portfolio website with great Lighthouse scores',
 	},
 
 	{
@@ -136,9 +144,10 @@ const webdevProjects = [
 		description: 'game',
 	},
 	{
-		href: 'https://sdn.org.pl/',
+		href: 'webdev/Sdn.org.pl.png',
 		imgSrc: 'webdev/Sdn.org.pl.png',
 		title: 'Sdn.org.pl',
+		status: '[offline as of 10.2026]',
 		year: '2022',
 		description: 'website of the Good Hope Association with a WordPress theme created from scratch',
 	},

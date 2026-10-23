@@ -44,6 +44,7 @@ html {
 .theme-light {
 	--text: hsl(0, 0%, 0%);
 	--text-secondary: hsl(0, 0%, 38%);
+	--text-status: hsl(0, 75%, 50%);
 	--background: hsl(0, 0%, 100%);
 	--opacity: hsla(0, 0%, 100%, 0.5);
 	--card-bcg: hsl(0, 0%, 100%);
@@ -66,6 +67,7 @@ html {
 .theme-dark {
 	--text: hsl(0, 0%, 100%);
 	--text-secondary: hsl(0, 0%, 67%);
+	--text-status: hsl(0, 75%, 50%);
 	--background: hsl(0, 0%, 0%);
 	--opacity: hsla(0, 0%, 0%, 0.5);
 	--card-bcg: hsl(0, 0%, 15%);
@@ -371,6 +373,12 @@ section.hidden > .grid-container--fill > * {
 p.bold {
 	font-weight: 500;
 	font-size: 1rem;
+}
+
+span.status {
+	font-weight: 400;
+	font-size: 0.875rem;
+	color: var(--text-status);
 }
 
 p.secondary {

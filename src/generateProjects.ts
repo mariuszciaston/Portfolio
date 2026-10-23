@@ -10,10 +10,11 @@ function generateStaticProject(
 		href?: string;
 		imgSrc?: string;
 		title?: string;
+		status?: string;
 		year?: string;
 		description?: string;
 	}[],
-	type: 'webdev' | 'mocap' | 'music' | 'graphics'
+	type: 'webdev' | 'mocap' | 'music' | 'graphics',
 ) {
 	return array
 		.map((project, index) => {
@@ -28,7 +29,8 @@ function generateStaticProject(
 
 				let textHTML = '';
 				if (type !== 'mocap') {
-					textHTML = `<div class="text"><p class="bold">${project.title}</p><p class="secondary">${project.description} | ${project.year}</p></div>`;
+					textHTML = `<div class="text"><p class="bold">${project.title}</p><p class="secondary">${project.description} | ${project.year} ${project.status ? `| <span class="status">${project.status}</span>` : ''}
+			 	</p></div>`;
 				}
 
 				if (type === 'mocap' || type === 'graphics') {
@@ -69,7 +71,7 @@ function generatePlaceholder(
 		year?: string;
 		description?: string;
 	}[],
-	type: 'webdev' | 'mocap' | 'music' | 'graphics'
+	type: 'webdev' | 'mocap' | 'music' | 'graphics',
 ) {
 	return array
 		.map((project, index) => {
@@ -80,19 +82,19 @@ function generatePlaceholder(
 					textHTML = `<div class="text"><p class="bold">${project.title}</p><p class="secondary">${project.description} | ${project.year}</p></div>`;
 				}
 				return `<div class="item-container-wrap"><div class="item-container" data-rendered="false" data-project='${JSON.stringify(
-					project
+					project,
 				)}' data-type="${type}" data-index="${index}"><a class="item"><div class="img-container"></div>${textHTML}</a></div></div>`;
 			}
 
 			if (type === 'mocap' && project.iframeSrc) {
 				return `<div class="item-container" data-rendered="false" data-project='${JSON.stringify(
-					project
+					project,
 				)}' data-type="${type}" data-index="${index}"></div>`;
 			}
 
 			if (type === 'music') {
 				return `<div class="item-container" data-rendered="false" data-project='${JSON.stringify(
-					project
+					project,
 				)}' data-type="${type}" data-index="${index}"></div>`;
 			}
 		})
@@ -119,7 +121,8 @@ function renderProject(container: HTMLElement) {
 			textHTML = `
 			<div class="text">
 				<p class="bold">${project.title}</p>
-				<p class="secondary">${project.description} | ${project.year}</p>
+				<p class="secondary">${project.description} | ${project.year} ${project.status ? `| <span class="status">${project.status}</span>` : ''}
+				</p>
 			</div>
 		`;
 		}
@@ -132,8 +135,8 @@ function renderProject(container: HTMLElement) {
 							<source srcset="${srcsetWebP}" sizes="${sizes}" type="image/webp">
 							<source srcset="${srcsetImage}" sizes="${sizes}" type="image/${imageExtension}">
 							<img src="${project.imgSrc}" alt="${project.title}" data-lightbox="${type}" data-full="${
-				project.hrefWebp || project.href
-			}" ${loadingAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'">
+								project.hrefWebp || project.href
+							}" ${loadingAttr} onerror="this.onerror=null; this.src='img/placeholder.png'; this.fetchPriority='high'">
 						</picture>
 					</div>
 					${textHTML}
