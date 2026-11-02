@@ -3,7 +3,6 @@ const webdevProjects = [
 		href: 'https://file-storage-mariusz-ciaston.koyeb.app/',
 		imgSrc: 'webdev/File-Storage.png',
 		title: 'File Storage',
-		status: '[temporarily unavailable - free database limit reached this month]',
 		year: '2026',
 		description: 'cloud drive for storing files using Prisma ORM and Cloudinary',
 	},
@@ -36,7 +35,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/Shopping-Cart.png',
 		title: 'FakeSTORE',
 		year: '2025',
-		description: 'a mock store with basic shopping cart functionality using React',
+		description: 'a mock store with basic shopping cart functionality using React, React testing library and snapshot testing',
 	},
 
 	{
@@ -44,7 +43,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/PokeMemo.png',
 		title: 'PokeMemo',
 		year: '2024',
-		description: 'Pokemon memory card game built with React',
+		description: 'Pokemon memory card game built with React (useEffect, useMemo hooks)',
 	},
 
 	{
@@ -68,7 +67,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/Battleship.png',
 		title: 'Battleship',
 		year: '2024',
-		description: 'game with PvC, CvC modes, speed change and laser sounds',
+		description: 'game with PvC, CvC modes, speed change and laser sounds based on MVC software design pattern, includes unit tests',
 	},
 
 	{
@@ -76,7 +75,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/minimaList.png',
 		title: 'minimaLIST',
 		year: '2023',
-		description: 'to-do list app',
+		description: 'simple black and white to-do list app with sounds',
 	},
 
 	{
@@ -84,7 +83,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/Weather-App.png',
 		title: 'Weather App',
 		year: '2023',
-		description: 'search by city or use location, color is based on temperature',
+		description: 'search by city or use location, color is based on temperature, API training',
 	},
 	{
 		href: 'https://mariuszciaston.github.io/Tic-Tac-Toe/',
@@ -105,7 +104,7 @@ const webdevProjects = [
 		imgSrc: 'webdev/Admin-Dashboard.png',
 		title: 'Admin Dashboard',
 		year: '2023',
-		description: 'administrative panel prototype',
+		description: 'administrative panel prototype, flexbox and grid training',
 	},
 	{
 		href: 'https://mariuszciaston.github.io/Restaurant-Page/',
